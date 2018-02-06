@@ -33,11 +33,11 @@
               <ul class="navbar-nav ml-auto">
                 @auth
                   <li class="nav-item">
-                    <a class="nav-link active" href="#" >Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link active" href="{{ url('/home') }}" >Home</a>
                   </li>
                 @else
                   <li class="nav-item">
-                    <a class="btn btn-primary btn-sm" href="{{ route('login') }}" role="button" aria-pressed="true">Login</a>
+                    <a class="nav-link" href="{{ route('login') }}" role="button" aria-pressed="true">Login</a>
                   </li>
                 @endauth
               </ul>

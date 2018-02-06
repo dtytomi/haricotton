@@ -10,71 +10,80 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
+    <!-- Fontawesome 5 -->
+    <script defer src="{{ URL::to('vendor/fontawesome/svg-with-js/js/fontawesome-all.min.js') }}"></script>
+
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/app.css')}}">
+    <link rel="stylesheet" href="{{URL::asset('css/base.css')}}">
+
 </head>
 <body>
-    <div id="app">
-        <nav class="navbar navbar-default navbar-static-top">
-            <div class="container">
-                <div class="navbar-header">
+  <div id="app">
+    <nav class="navbar navbar-default navbar-static-top navbar-custom" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="{{ url('/') }}">
+            {{ config('app.name', 'Laravel') }}
+          </a>
+        </div>
+        
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="nav navbar-nav navbar-right">
+            <!-- Authentication Links -->
+            @guest
+              <li class="active">
+                <a  href="{{ route('login') }}">Login</a>
+              </li>
+              <!-- Commented out Registration Link -->
+              <!-- <li class="active">
+                <a  href="{{ route('register') }}">Register</a>
+              </li> -->
+            @else
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  {{ Auth::user()->name }} <span class="caret">
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li>
+                    <a href="{{ route('logout') }}" onclick="event.preventDefault();
+                     document.getElementById('logout-form').submit();">logout</a>
+                  </li>
+                  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    {{ csrf_field() }}
+                  </form>
+                </ul>
+              </li>
+            @endguest
+          </ul>
+        </div>
+      </div>
+    </nav>
+    @yield('content')
+  </div>
 
-                    <!-- Collapsed Hamburger -->
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse" aria-expanded="false">
-                        <span class="sr-only">Toggle Navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
+  <!-- jQuery -->
+  <script src="{{ URL::to('vendor/jquery.min.js') }}"></script>
 
-                    <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
-                    </a>
-                </div>
+  <!-- Bootstrap Core JavaScript -->
+  <script src="{{ URL::to('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
 
-                <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
-                        &nbsp;
-                    </ul>
+  <!-- Plugin JavaScript -->
+  <script src="{{ URL::to('vendor/jquery.easing.min.js') }}"></script>
+  <script src="{{ URL::to('vendor/wow.min.js') }}"></script>
 
-                    <!-- Right Side Of Navbar -->
-                    <ul class="nav navbar-nav navbar-right">
-                        <!-- Authentication Links -->
-                        @guest
-                            <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
-                        @else
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
+  <!-- Picture Holder -->
+  <script src="{{ URL::to('vendor/holder.js') }}"></script>
 
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                            Logout
-                                        </a>
+  <!-- Scripts -->
+  <script src="{{ asset('js/app.js') }}"></script>
+  <script src="{{ asset('js/register.js') }}"></script>
 
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
-                                    </li>
-                                </ul>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
-            </div>
-        </nav>
-
-        @yield('content')
-    </div>
-
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>

@@ -69,13 +69,13 @@
   </div>
 
   <!-- jQuery -->
-  <script src="{{ URL::to('vendor/jquery.min.js') }}"></script>
+  <script src="{{ URL::to('vendor/jquery/jquery.min.js') }}"></script>
 
   <!-- Bootstrap Core JavaScript -->
   <script src="{{ URL::to('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
 
   <!-- Plugin JavaScript -->
-  <script src="{{ URL::to('vendor/jquery.easing.min.js') }}"></script>
+  <script src="{{ URL::to('vendor/jquery-easing/jquery.easing.min.js') }}"></script>
   <script src="{{ URL::to('vendor/wow.min.js') }}"></script>
 
   <!-- Picture Holder -->

@@ -1,0 +1,47 @@
+<section ng-controller="helpCtrl">
+
+  <form role="form" ng-submit="submitHelp()" novalidate> 
+
+    <div class="form-group row">
+      <label for="subject" class="col-sm-2 col-form-label">Subject</label>
+      <div class="col-xs-6 col-sm-6 col-md-10">
+        <input type="text" name="message" id="message" class="form-control input-sm" placeholder="Subject" ng-model="helpData.subject">
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="message" class="col-sm-2 col-form-label">Message</label>
+      <div class="col-xs-6 col-sm-6 col-md-10">
+        <textarea type="text" name="subject" id="subject" class="form-control" placeholder="Message" rows="3" ng-model="helpData.message"></textarea>
+      </div>
+    </div>
+        
+    <input type="submit" value="Send" class="btn btn-info btn-block">
+  </form>
+
+  <br />  
+
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">S / N</th>
+        <th scope="col">Subject</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr ng-repeat="help in helps">
+        <th scope="row">{{$index + 1}}</th>
+        <td>{{help.subject}}</td>
+        <td>
+          <a ui-sref="showHelp({id: help.id})" class="btn btn-success btn-sm">Show</a>
+      
+          <a href="" ng-click="deleteHelp(help.id)" class="btn btn-danger btn-sm">Del</a>
+        </td>
+      </tr>
+    </tbody>
+
+  </table>
+
+</section>

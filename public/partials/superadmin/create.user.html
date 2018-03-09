@@ -1,0 +1,66 @@
+<section ng-controller="UserManagementCtrl">
+  <!-- Breadcrumbs-->
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a href="#">Super Admin</a>
+    </li>
+    <li class="breadcrumb-item active">Create User</li>
+  </ol>
+
+  <form role="form" ng-submit="createUser()" name="createUser" novalidate> 
+
+    <div class="form-group row">
+      <label for="name" class="col-sm-2 col-form-label">Name</label>
+      <p class="text-danger" ng-show="createUser.name.$error.required">*</p>
+      <div class="col-xs-6 col-sm-6 col-md-9">
+        <input type="text" name="name" id="name" class="form-control input-sm" placeholder="Name" ng-model="userData.name">
+      </div>
+    </div>
+    
+    <div class="form-group row">
+      <label for="email" class="col-sm-2 col-form-label">Email Address</label>
+      <p class="text-danger" ng-show="createUser.email.$error.required">*</p>
+      <div class="col-xs-6 col-sm-6 col-md-9">
+        <input type="email" name="email" id="email" class="form-control input-sm" placeholder="Email" ng-model="userData.email">
+      </div>
+    </div>
+
+    
+    <div class="form-group row" ng-class="{'has-error': userData.role.$invalid && !formData.role.$pristine}">
+      <label for="role" class="col-sm-2 col-form-label">Role</label>
+      <p class="text-danger" ng-show="createUser.city.$error.required">*</p>
+      <div class="col-xs-6 col-sm-6 col-md-9">
+        <select class="form-control" ng-model="userData.role" ng-options="role.display_name for role in roles"></select>
+      </div>
+    </div>
+
+    <fieldset class="form-group">
+
+      <div class="row" ng-class="{'has-error': userData.password.$invalid && !formData.password.$pristine}">
+          <label for="password" class="col-sm-2 col-form-label">Password</label>
+          <p class="text-danger" ng-show="createUser.password.$error.required">*</p>
+          <div class="col-xs-6 col-sm-6 col-md-9">
+            <input type="password" name="password" id="password" class="form-control input-sm" placeholder="Password" ng-model="userData.password" ng-minlength="8" ng-maxlength="20" ng-pattern="/(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z])/" required/>
+            <p class="text-danger" ng-show="createUser.password.$error.minlength">Password must be between 8 and 20 characters.</p>
+            <p class="text-danger" ng-show="createUser.password.$error.pattern">Must contain one lower &amp; uppercase letter, and one non-alpha character (a number or a symbol.)</p>
+          </div>
+      </div>
+    </fieldset>
+    <fieldset class="form-group">
+      <div class="row" ng-class="{'has-error': userData.confirmPassword.$invalid && !formData.confirmPassword.$pristine}">
+        
+          <label for="confirmPassword" class="col-sm-2 col-form-label">Confirm Password</label>
+          <p class="text-danger" ng-show="createUser.confirmPassword.$error.required">*</p>
+          <div class="col-xs-6 col-sm-6 col-md-9">
+            <input type="password" name="confirmPassword" id="confirmPassword" class="form-control input-sm" ng-model="userData.confirmPassword" placeholder="confirmPassword" valid-password-c="userData.password" required />
+            <p class="text-danger" ng-show="createUser.confirmPassword.$error.noMatch">Password do not match.</p>
+
+          </div>
+       
+      </div>
+
+    </fieldset>
+    
+    <input type="submit" value="Submit" class="btn btn-info btn-block">
+  </form>
+</section>

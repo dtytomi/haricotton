@@ -1,0 +1,13 @@
+<section ng-controller="helpCtrl" data-ng-init="findOne()">
+  <dl class="row">
+    <dt class="col-sm-3">Subject:</dt>
+    <dd class="col-sm-9">
+      <input class="form-control" type="text" ng-value="help.subject" placeholder="Readonly input here…" readonly>
+    </dd>
+
+    <dt class="col-sm-3">Message:</dt>
+    <dd class="col-sm-9">
+      <textarea type="text" name="subject" id="subject" class="form-control" placeholder="Message" rows="3" readonly>{{help.message}}</textarea>
+    </dd>
+  </dl>
+</section>

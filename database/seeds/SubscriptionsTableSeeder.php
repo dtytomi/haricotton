@@ -1,6 +1,9 @@
 <?php
 
+<<<<<<< HEAD
 use Faker\Factory as Faker;
+=======
+>>>>>>> fc40ebd6c823d4f072333df732ef7c35aa38f630
 use Illuminate\Database\Seeder;
 
 class SubscriptionsTableSeeder extends Seeder
@@ -13,6 +16,7 @@ class SubscriptionsTableSeeder extends Seeder
     public function run()
     {
         //
+<<<<<<< HEAD
         $faker  = Faker::create();
 
         foreach (range(1, 10) as $index) {
@@ -28,5 +32,8 @@ class SubscriptionsTableSeeder extends Seeder
               'updated_at'=> $now
           ]);
         }
+=======
+        factory(Haricotton\Subscription::class, 5)->create();
+>>>>>>> fc40ebd6c823d4f072333df732ef7c35aa38f630
     }
 }

@@ -1,4 +1,5 @@
 harricottonApp
+<<<<<<< HEAD
   .controller('profileCtrl', function userCtrl($scope, $http, $stateParams, Profile, $location) {
     // body...
 
@@ -144,4 +145,9 @@ harricottonApp
         });
     }
 
+=======
+  .controller('userCtrl', function userCtrl($scope) {
+    // body...
+    
+>>>>>>> fc40ebd6c823d4f072333df732ef7c35aa38f630
   });

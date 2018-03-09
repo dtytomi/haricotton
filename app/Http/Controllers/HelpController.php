@@ -2,14 +2,19 @@
 
 namespace Haricotton\Http\Controllers;
 
+<<<<<<< HEAD
 use Auth;
 
 use Haricotton\Help; 
 use Haricotton\User;
+=======
+use Haricotton\Help;
+>>>>>>> fc40ebd6c823d4f072333df732ef7c35aa38f630
 use Illuminate\Http\Request;
 
 class HelpController extends Controller
 {
+<<<<<<< HEAD
    /**
      * Create a new controller instance.
      *
@@ -60,6 +65,15 @@ class HelpController extends Controller
 
     }
 
+=======
+    //
+    public function index()
+    {
+      # code...
+      return Help::all();
+    }
+
+>>>>>>> fc40ebd6c823d4f072333df732ef7c35aa38f630
     public function show($id)
     {
       # code...
@@ -68,6 +82,7 @@ class HelpController extends Controller
       return $help;
     }
 
+<<<<<<< HEAD
    
     public function destroy($id)
     {
@@ -77,4 +92,22 @@ class HelpController extends Controller
 
       return $help;
     }
+=======
+    public function store(Request $request)
+    {
+      # code...
+      // validate our input 
+      $this->validate($request, ['subject' => 'required']);
+      $this->validate($request, ['message' => 'required']);
+
+
+      $help = Help::create([
+        'subject' => $request->input('subject'),
+        'message' => $request->input('message'),
+      ]);
+
+      return $help;
+    }
+
+>>>>>>> fc40ebd6c823d4f072333df732ef7c35aa38f630
 }

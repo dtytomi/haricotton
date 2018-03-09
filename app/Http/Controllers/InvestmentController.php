@@ -2,6 +2,11 @@
 
 namespace Haricotton\Http\Controllers;
 
+<<<<<<< HEAD
+=======
+use Haricotton\Investment;
+use Haricotton\Subscription;
+>>>>>>> fc40ebd6c823d4f072333df732ef7c35aa38f630
 use Illuminate\Http\Request;
 
 class InvestmentController extends Controller
@@ -37,4 +42,9 @@ class InvestmentController extends Controller
 
       return $investment;
     }
+<<<<<<< HEAD
+=======
+
+    
+>>>>>>> fc40ebd6c823d4f072333df732ef7c35aa38f630
 }

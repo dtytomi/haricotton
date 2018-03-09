@@ -152,7 +152,6 @@ return [
          */
         Zizaco\Entrust\EntrustServiceProvider::class,
 
-
         /*
          * Application Service Providers...
          */

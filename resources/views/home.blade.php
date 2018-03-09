@@ -193,7 +193,6 @@
     <script src="{{URL::to('js/controllers/userCtrl.js')}}"></script>
     <script src="{{URL::to('js/services/userService.js')}}"></script>
 
-
     <script type="text/javascript">
       window.FontAwesomeConfig = {
         searchPseudoElements: true,

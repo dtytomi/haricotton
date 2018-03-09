@@ -2,11 +2,19 @@
 
 namespace Haricotton\Http\Controllers;
 
+<<<<<<< HEAD
+=======
+use Haricotton\Subscription;
+>>>>>>> fc40ebd6c823d4f072333df732ef7c35aa38f630
 use Illuminate\Http\Request;
 
 class SubscriptionController extends Controller
 {
+<<<<<<< HEAD
   //
+=======
+    //
+>>>>>>> fc40ebd6c823d4f072333df732ef7c35aa38f630
   public function index()
   {
     # code...

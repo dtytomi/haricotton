@@ -67,4 +67,4 @@ harricottonApp.config(function ($locationProvider, $stateProvider) {
       enabled: true,
       requireBase: false
     });
-})
+});

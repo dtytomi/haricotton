@@ -12,7 +12,8 @@ class Help extends Model
         'user_id'
     ];
 
-    public function user()
+
+    public function users()
     {
       # code...
       return $this

@@ -6,8 +6,10 @@ use Log;
 use Auth;
 use Haricotton\Role;
 use Haricotton\User;
-use Illuminate\Http\Request;
 use Haricotton\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Http\Request;
+
 
 class UserManagementController extends Controller
 { 
@@ -19,7 +21,7 @@ class UserManagementController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        // $this->middleware('permission:users');
+        $this->middleware('permission:users');
     }
 
     /**
@@ -30,8 +32,8 @@ class UserManagementController extends Controller
     public function index(Request $request)
     {
       # code...
-      $roles = Role::all()->toArray();
-      $data = User::orderBy('id', 'DESC')->toArray();
+      $roles = Role::get()->toArray();
+      $data = User::get()->toArray();
       return array($roles, $data);
     }
 
@@ -46,18 +48,25 @@ class UserManagementController extends Controller
       $this->validate($request, [
         'name' => 'required',
         'email' => 'required|email|unique:users,email',
-        'password' => 'required|same:confirm-password',
-        'roles' => 'required'
+        'password' => 'required',
+        'role' => 'required'
       ]);
 
-      $input = $request->all();
-      $input['password'] = Hash::make($input['password']);
+      Log::info('Log message', array('context' => $request->all()));
 
-      $user = User::create($input);
+      $user = User::create([
+            'name' => $request->input['name'],
+            'email' => $request->input['email'],
+            'password' => Hash::make($request->input['password']),
+        ]);
 
-      foreach ($request->input('roles') as $key => $value) {
-        $user->attachRole($value);
+      $user->attachRole($request->input('role'));
+
+      if (condition) {
+        # code...
       }
+
+      $user->save();
 
       return $user;
 

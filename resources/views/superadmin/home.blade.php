@@ -82,18 +82,10 @@
           </ul>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
-          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti" data-parent="#exampleAccordion">
-            <i class="fa fa-fw fa-sitemap"></i>
+          <a class="nav-link" ui-sref="listUsers" ui-sref-active="active">
+            <i class="fa fa-fw fa-users"></i>
             <span class="nav-link-text">Users</span>
           </a>
-          <ul class="sidenav-second-level collapse" id="collapseMulti">
-            <li>
-              <a ui-sref="createUser" ui-sref-active="active" href="">Create New User</a>
-            </li>
-            <li>
-              <a href="#">Edit Users</a>
-            </li>
-          </ul>
         </li>
          <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
           <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseInvt" data-parent="#exampleAccordion">

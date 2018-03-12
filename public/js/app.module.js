@@ -57,6 +57,12 @@ harricottonApp.config(function ($locationProvider, $stateProvider) {
     })
 
     .state ({
+      name: 'listUsers',
+      url: '/superadmin/users',
+      templateUrl: '/partials/superadmin/list.users.html'
+    })
+
+    .state ({
       name: 'createUser',
       url: '/superadmin/new',
       templateUrl: '/partials/superadmin/create.user.html'

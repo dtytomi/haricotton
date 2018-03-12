@@ -19,19 +19,29 @@ harricottonApp
         return $http.get(constants.API_URL + 'users/');
       },
 
-      save: function(helpData) {
+      save: function(userData) {
         // body...
         return $http({
           method: 'POST',
           url: constants.API_URL + 'users/',
           headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-          data: $.param(helpData)
+          data: $.param(userData)
         });
       },
 
       show: function(id) {
         // body...
         return $http.get(constants.API_URL + 'users/' + id);
+      },
+
+      update: function(userData, id) {
+        // body...
+        return $http({
+          method: 'PUT',
+          url: constants.API_URL + 'profile/' + id,
+          headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+          data: $.param(profileData)
+        });
       },
 
       // destroy a comment

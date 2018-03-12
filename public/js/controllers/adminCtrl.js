@@ -28,13 +28,17 @@ harricottonApp
     $scope.roles = {};
     $scope.users = {};
     $scope.user = {};
+    
+    // object to hold all the data for the new user form
     $scope.userData = {};
 
     UsersManagement.get()
       .then(function(response) {
         // body...
-        $scope.users = response.data;
-        
+        $scope.userManagementdata = response.data;
+
+        $scope.users = $scope.userManagementdata.pop();
+        $scope.roles = $scope.userManagementdata.pop();
       }, 
       function  (error) {
         // body...
@@ -62,15 +66,18 @@ harricottonApp
         
         // save the user. pass in user data from the form
         // use the function we created in our service
-        UsersManagement.save($scope.profileData, id)
+        UsersManagement.save($scope.userData)
             .then(function (response) {
               // body...
-              id = response.data.id;
-              UsersManagement.show(id)
+              UsersManagement.get()
                   .then(function (response) {
                     // body...
-                    $scope.users = response.data;
-                    $location.path('/home/profile');
+                    $scope.userManagementdata = response.data;
+
+                    $scope.users = $scope.userManagementdata.pop();
+                    $scope.roles = $scope.userManagementdata.pop();
+
+                    $location.path('/superadmin/users');
                   });
             }, function (error) {
               // body...

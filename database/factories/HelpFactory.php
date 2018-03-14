@@ -8,7 +8,7 @@ $factory->define(Haricotton\Help::class, function (Faker $faker) {
 
     return [
         //
-        'subject' => $faker->text,
+        'subject' => $faker->word .'_subject',
         'message' => $faker->paragraph,
         'user_id' => $faker->numberBetween(1,10),
         'created_at'=> $now,

@@ -5,6 +5,23 @@ harricottonApp.constant('constants', {
         API_URL: 'http://localhost:8000/api/'
     });
 
+harricottonApp
+  .factory('beforeUnload', function ($location, $window) {
+      // Events are broadcast outside the Scope Lifecycle
+      
+      $window.onbeforeunload = function () {
+          $location.path('/superadmin');
+      };
+      
+      $window.onunload = function () {
+          
+      };
+      return {};
+  })
+  .run(function (beforeUnload) {
+      // Must invoke the service at least once
+  });
+
 harricottonApp.config(function ($locationProvider, $stateProvider) {
   // body...
   $stateProvider

@@ -76,15 +76,8 @@ body.fixed-nav {
 
 #mainNav .navbar-collapse .navbar-sidenav .nav-link-collapse:after {
   float: right;
-<<<<<<< HEAD
   content: '\f107';
   font-family: 'FontAwesome';
-=======
-  width: auto;
-  content: '\f105';
-  border: none;
-  font-family: 'Font Awesome 5 Solid';
->>>>>>> fc40ebd6c823d4f072333df732ef7c35aa38f630
 }
 
 #mainNav .navbar-collapse .navbar-sidenav .nav-link-collapse.collapsed:after {
@@ -130,11 +123,7 @@ body.fixed-nav {
   width: auto;
   content: '\f105';
   border: none;
-<<<<<<< HEAD
   font-family: 'FontAwesome';
-=======
-  font-family: 'Font Awesome 5 Solid';
->>>>>>> fc40ebd6c823d4f072333df732ef7c35aa38f630
 }
 
 #mainNav .navbar-collapse .navbar-nav > .nav-item.dropdown > .nav-link .indicator {
@@ -145,11 +134,7 @@ body.fixed-nav {
 }
 
 #mainNav .navbar-collapse .navbar-nav > .nav-item.dropdown.show > .nav-link:after {
-<<<<<<< HEAD
   content: '\f107';
-=======
-  content: '\f105';
->>>>>>> fc40ebd6c823d4f072333df732ef7c35aa38f630
 }
 
 #mainNav .navbar-collapse .navbar-nav > .nav-item.dropdown .dropdown-menu > .dropdown-item > .dropdown-message {

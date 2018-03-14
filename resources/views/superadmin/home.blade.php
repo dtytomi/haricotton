@@ -33,7 +33,7 @@
     <![endif]-->
 </head>
 
-<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+<body class="fixed-nav sticky-footer bg-dark" id="page-top" data-ng-controller="refreshCtrl">
   <!-- Navigation-->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
     <a class="navbar-brand" href="{{ url('/') }}">{{ config('app.name', 'Laravel') }}</a>
@@ -90,11 +90,11 @@
          <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
           <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseInvt" data-parent="#exampleAccordion">
             <i class="fa fa-fw fa-sitemap"></i>
-            <span class="nav-link-text">Customers</span>
+            <span class="nav-link-text">Investors</span>
           </a>
           <ul class="sidenav-second-level collapse" id="collapseInvt">
             <li>
-              <a href="#">View Customers</a>
+              <a href="#">View Investors</a>
             </li>
           </ul>
         </li>
@@ -158,6 +158,7 @@
 
     <!-- all angular resources will be loaded from the /public folder -->    
     <script src="{{URL::to('js/app.module.js')}}"></script>
+    <script src="{{URL::to('js/controllers/refreshCtrl.js')}}"></script>
     <script src="{{URL::to('js/controllers/adminCtrl.js')}}"></script>
     <script src="{{URL::to('js/services/adminService.js')}}"></script>
 

@@ -23,7 +23,7 @@ harricottonApp
   });
 
 harricottonApp
-  .controller('UserManagementCtrl', function UserManagementCtrl ($scope, $http, Roles, UsersManagement) {
+  .controller('UserManagementCtrl', function UserManagementCtrl ($scope, $http, Roles, UsersManagement, $location) {
     // body...
     $scope.roles = {};
     $scope.users = {};
@@ -39,6 +39,8 @@ harricottonApp
 
         $scope.users = $scope.userManagementdata.pop();
         $scope.roles = $scope.userManagementdata.pop();
+
+        console.log($scope.users);
       }, 
       function  (error) {
         // body...

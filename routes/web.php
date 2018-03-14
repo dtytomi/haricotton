@@ -49,7 +49,7 @@ Route::group(['prefix' => 'api',  'middleware' => 'cors'], function ()
     array('only' => array('index', 'show', 'update')));  
 
   Route::resource('users', 'Admin\UserManagementController',
-    array('only' => array('index', 'show', 'store', 'update'))); 
+    array('only' => array('index', 'show', 'store', 'update', 'destroy'))); 
 
 });
 

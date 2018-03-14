@@ -69,6 +69,12 @@ class PermissionsTableSeeder extends Seeder
             'description' => 'Allow user to manage system users'
           ]
 
+          [
+            'name' => 'staff',
+            'display_name' => 'View Users',
+            'description' => 'Allow user to view system users'
+          ]
+
         ];
 
         foreach ($permission as $key => $value) {

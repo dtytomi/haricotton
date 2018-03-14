@@ -13,7 +13,7 @@ class CreatePayOutOrdersTable extends Migration
      */
     public function up()
     {
-        Schema::create('pay_out_orders', function (Blueprint $table) {
+        Schema::create('orders', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('amount');
             $table->text('reason');
@@ -31,6 +31,6 @@ class CreatePayOutOrdersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pay_out_orders');
+        Schema::dropIfExists('orders');
     }
 }

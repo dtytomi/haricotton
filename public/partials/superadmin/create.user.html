@@ -41,8 +41,12 @@
           <p class="text-danger" ng-show="newUser.password.$error.required">*</p>
           <div class="col-xs-6 col-sm-6 col-md-9">
             <input type="password" name="password" id="password" class="form-control input-sm" placeholder="Password" ng-model="userData.password" ng-minlength="8" ng-maxlength="20" ng-pattern="/(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z])/" required/>
-            <p class="text-danger" ng-show="newUser.password.$error.minlength">Password must be between 8 and 20 characters.</p>
-            <p class="text-danger" ng-show="newUser.password.$error.pattern">Must contain one lower &amp; uppercase letter, and one non-alpha character (a number or a symbol.)</p>
+            <div class="invalid-feedback" ng-show="newUser.password.$error.minlength">
+              Password must be between 8 and 20 characters.
+            </div>
+            <div class="invalid-feedback" ng-show="newUser.password.$error.pattern">
+              Must contain one lower &amp; uppercase letter, and one non-alpha character (a number or a symbol.)
+            </div>
           </div>
       </div>
     </fieldset>
@@ -53,8 +57,9 @@
           <p class="text-danger" ng-show="newUser.confirmPassword.$error.required">*</p>
           <div class="col-xs-6 col-sm-6 col-md-9">
             <input type="password" name="confirmPassword" id="confirmPassword" class="form-control input-sm" ng-model="userData.confirmPassword" placeholder="confirmPassword" valid-password-c="userData.password" required />
-            <p class="text-danger" ng-show="newUser.confirmPassword.$error.noMatch">Password do not match.</p>
-
+            <div class="invalid-feedback" ng-show="newUser.confirmPassword.$error.noMatch">
+              Password do not match.
+            </div>
           </div>
        
       </div>

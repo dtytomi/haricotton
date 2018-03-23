@@ -25,6 +25,9 @@ Route::get('/admin', 'Admin\AdminController@index');
 
 Route::get('/superadmin', 'Admin\SuperAdminController@index');
 
+Route::post('/pay', 'PaymentController@redirectToGateway')->name('pay'); 
+Route::get('/pay', 'PaymentController@index')->name('pay'); 
+
 
 Route::group(['prefix' => 'api',  'middleware' => 'cors'], function ()
 {
@@ -49,6 +52,9 @@ Route::group(['prefix' => 'api',  'middleware' => 'cors'], function ()
     array('only' => array('index', 'show', 'update')));  
 
   Route::resource('users', 'Admin\UserManagementController',
+    array('only' => array('index', 'show', 'store', 'update', 'destroy')));
+
+  Route::resource('subscriptions', 'Admin\SubscriptionController',
     array('only' => array('index', 'show', 'store', 'update', 'destroy'))); 
 
 });

@@ -14,7 +14,7 @@ class RolesTableSeeder extends Seeder
     public function run()
     {
         //
-        $role = [
+        $roles = [
 
           [
             'name' => 'role-admin',
@@ -41,7 +41,7 @@ class RolesTableSeeder extends Seeder
           ]
         ];
 
-        foreach ($role as $key => $value) {
+        foreach ($roles as $key => $value) {
             Role::create($value);
         };
     }

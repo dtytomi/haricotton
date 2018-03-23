@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Haricotton</title>
+        <title>{{ config('app.name', 'Laravel') }}</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:200,300,500,700" rel="stylesheet"> 
@@ -78,94 +78,110 @@
       <aside>
         <div class="container-fluid">
           <div class="row">
-
-            <div class="card text-center bg-light" style="width: 20.33rem;">
-              <div class="card-body">
-                <span style="color:#fed136">
-                  <i class="far fa-hourglass fa-2x"></i>
-                </span>
-                <h4 class="card-title">Ordinary</h4>
-                <p class="card-text">The Total Investment including membership fee is #5250 or $15</p>
-                <a href="#" class="">Learn More <i class="fas fa-angle-right fa-1x"></i></a>
+            <div class="col-md-3 col-sm-6">
+              <div class="card text-center bg-light">
+                <div class="card-body">
+                  <span style="color:#fed136">
+                    <i class="far fa-hourglass fa-2x"></i>
+                  </span>
+                  <h4 class="card-title">Ordinary</h4>
+                  <p class="card-text">The Total Investment including membership fee is ₦5250 or $15</p>
+                  <a href="#" class="">Learn More <i class="fas fa-angle-right fa-1x"></i></a>
+                </div>
               </div>
             </div>
-
-            <div class="card text-center bg-light" style="width: 20.33rem;">
-              <div class="card-body">
-                <span style="color:#fed136">
-                  <i class="far fa-lemon fa-2x"></i>
-                </span>
-                <h4 class="card-title">Bronze</h4>
-                <p class="card-text">The Total Investment including membership fee is #10,500 or $30.</p>
-                <a href="#" class="">Learn More <i class="fas fa-angle-right fa-1x"></i></a>
+            
+            <div class="col-md-3 col-sm-6">
+              <div class="card text-center bg-light">
+                <div class="card-body">
+                  <span style="color:#fed136">
+                    <i class="far fa-lemon fa-2x"></i>
+                  </span>
+                  <h4 class="card-title">Bronze</h4>
+                  <p class="card-text">The Total Investment including membership fee is ₦10,500 or $30.</p>
+                  <a href="#" class="">Learn More <i class="fas fa-angle-right fa-1x"></i></a>
+                </div>
               </div>
             </div>
-
-            <div class="card text-center bg-light" style="width: 20.33rem;">
-              <div class="card-body">
-                <span style="color:#fed136">
-                  <i class="far fa-object-ungroup  fa-2x"></i>
-                </span>
-                <h4 class="card-title">Silver</h4>
-                <p class="card-text">The Total Investment including membership fee is #21,000 or $60.</p>
-                <a href="#" class="">Learn More <i class="fas fa-angle-right fa-1x"></i></a>
+            
+            <div class="col-md-3 col-sm-6">
+              <div class="card text-center bg-light">
+                <div class="card-body">
+                  <span style="color:#fed136">
+                    <i class="fab fa-connectdevelop  fa-2x"></i>
+                  </span>
+                  <h4 class="card-title">Silver</h4>
+                  <p class="card-text">The Total Investment including membership fee is ₦21,000 or $60.</p>
+                  <a href="#" class="">Learn More <i class="fas fa-angle-right fa-1x"></i></a>
+                </div>
+              </div> 
+            </div>
+            
+            <div class="col-md-3 col-sm-6">
+              <div class="card text-center bg-light">
+                <div class="card-body">
+                  <span style="color:#fed136">
+                    <i class="far fa-snowflake fa-2x"></i>
+                  </span>
+                  <h4 class="card-title">Gold</h4>
+                  <p class="card-text">The Total Investment including membership fee is ₦42000 or $120.</p>
+                  <a href="#" class="">Learn More <i class="fas fa-angle-right fa-1x"></i></a>
+                </div>
+              </div>  
+            </div>
+            
+            <div class="col-md-3 col-sm-6">
+              <div class="card text-center bg-light">
+                <div class="card-body">
+                  <span style="color:#fed136">
+                    <i class="far fa-sun fa-2x"></i>
+                  </span>
+                  <h4 class="card-title">Sapphire</h4>
+                  <p class="card-text">The Total Investment including membership fee is ₦72,000 or $1920.</p>
+                  <a href="#" class="">Learn More <i class="fas fa-angle-right fa-1x"></i></a>
+                </div>
+              </div>  
+            </div>
+            
+            <div class="col-md-3 col-sm-6">
+              <div class="card text-center bg-light">
+                <div class="card-body">
+                  <span style="color:#fed136">
+                    <i class="far fa-gem fa-2x"></i>
+                  </span>
+                  <h4 class="card-title">Diamond</h4>
+                  <p class="card-text">The Total Investment including membership fee is ₦84,000 or $240.</p>
+                  <a href="#" class="">Learn More <i class="fas fa-angle-right fa-1x"></i></a>
+                </div>
               </div>
             </div>
-
-            <div class="card text-center bg-light" style="width: 20.33rem;">
-              <div class="card-body">
-                <span style="color:#fed136">
-                  <i class="far fa-snowflake fa-2x"></i>
-                </span>
-                <h4 class="card-title">Gold</h4>
-                <p class="card-text">The Total Investment including membership fee is #42000 or $120.</p>
-                <a href="#" class="">Learn More <i class="fas fa-angle-right fa-1x"></i></a>
+            
+            <div class="col-md-3 col-sm-6">
+              <div class="card text-center bg-light">
+                <div class="card-body">
+                  <span style="color:#fed136">
+                    <i class="fas fa-certificate  fa-2x"></i>
+                  </span>
+                  <h4 class="card-title">Platinum</h4>
+                  <p class="card-text">The Total Investment including membership fee is ₦168,000 or $480.</p>
+                  <a href="#" class="">Learn More <i class="fas fa-angle-right fa-1x"></i></a>
+                </div>
               </div>
             </div>
-
-            <div class="card text-center bg-light" style="width: 20.33rem;">
-              <div class="card-body">
-                <span style="color:#fed136">
-                  <i class="far fa-gem fa-2x"></i>
-                </span>
-                <h4 class="card-title">Diamond</h4>
-                <p class="card-text">The Total Investment including membership fee is #84000 or $240.</p>
-                <a href="#" class="">Learn More <i class="fas fa-angle-right fa-1x"></i></a>
+            
+            <div class="col-md-3 col-sm-6">
+              <div class="card text-center bg-light">
+                <div class="card-body">
+                  <span style="color:#fed136">
+                    <i class="far fa-star  fa-2x"></i>
+                  </span>
+                  <h4 class="card-title">Onyx</h4>
+                  <p class="card-text">The Total Investment including membership fee is ₦336,000 or $960.</p>
+                  <a href="#" class="">Learn More <i class="fas fa-angle-right fa-1x"></i></a>
+                </div>
               </div>
             </div>
-
-            <div class="card text-center bg-light" style="width: 20.33rem;">
-              <div class="card-body">
-                <span style="color:#fed136">
-                  <i class="fas fa-certificate  fa-2x"></i>
-                </span>
-                <h4 class="card-title">Platinum</h4>
-                <p class="card-text">The Total Investment including membership fee is #168000 or $480.</p>
-                <a href="#" class="">Learn More <i class="fas fa-angle-right fa-1x"></i></a>
-              </div>
-            </div>
-
-            <div class="card text-center bg-light" style="width: 20.33rem;">
-              <div class="card-body">
-                <span style="color:#fed136">
-                  <i class="far fa-star  fa-2x"></i>
-                </span>
-                <h4 class="card-title">Onyx</h4>
-                <p class="card-text">The Total Investment including membership fee is #336000 or $960.</p>
-                <a href="#" class="">Learn More <i class="fas fa-angle-right fa-1x"></i></a>
-              </div>
-            </div>
-
-            <div class="card text-center bg-light" style="width: 20.33rem;">
-              <div class="card-body">
-                <span style="color:#fed136">
-                  <i class="far fa-sun fa-2x"></i>
-                </span>
-                <h4 class="card-title">Sapphire</h4>
-                <p class="card-text">The Total Investment including membership fee is #672,000 or $1920.</p>
-                <a href="#" class="">Learn More <i class="fas fa-angle-right fa-1x"></i></a>
-              </div>
-            </div>
+          
 
           </div>
           <!-- Row ends -->
@@ -178,7 +194,7 @@
           <div class="row">
             <div class="col-lg-12 text-center">
               <h2 class="section-heading">About Us</h2>
-              <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+              <!-- <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3> -->
             </div>
           </div>
           <!-- Row 1 -->
@@ -207,40 +223,42 @@
       <footer>
         <div class="container">
           <div class="row">
-            <div class="col">
-              <ul class="list-unstyled">
-                <li>Lorem ipsum dolor sit amet</li>
-                <li>Consectetur adipiscing elit</li>
-                <li>Integer molestie lorem at massa</li>
-                <li>Facilisis in pretium nisl aliquet</li>
-                <li>Faucibus porta lacus fringilla vel</li>
-                <li>Aenean sit amet erat nunc</li>
-                <li>Eget porttitor lorem</li>
-              </ul>
+
+            <div class="col-md-4 col-sm-6">
+              <h4>Location:</h4>
+              <address>
+                <strong>Haricotton.</strong><br>
+                795 Folsom Ave, Suite 600<br>
+                San Francisco, CA 94107<br>
+                <abbr title="Phone">P:</abbr> (123) 456-7890
+              </address>
             </div>
             <!-- List 1 -->
-            <div class="col">
-              <ul class="list-unstyled">
-                <li>Lorem ipsum dolor sit amet</li>
-                <li>Consectetur adipiscing elit</li>
-                <li>Integer molestie lorem at massa</li>
-                <li>Facilisis in pretium nisl aliquet</li>
-                <li>Faucibus porta lacus fringilla vel</li>
-                <li>Aenean sit amet erat nunc</li>
-                <li>Eget porttitor lorem</li>
+
+            <div class="col-md-4 col-sm-6">
+              <h4>Follow Us:</h4>
+              <ul class="list-unstyled list-inline list-social-icons">
+                <li class="list-inline-item">
+                    <a href="#"><i class="fab fa-facebook-square fa-2x"></i></a>
+                </li>
+                <li class="list-inline-item">
+                    <a href="#"><i class="fab fa-twitter-square fa-2x"></i></a>
+                </li>
+                <li class="list-inline-item">
+                    <a href="#"><i class="fab fa-google-plus-square fa-2x"></i></a>
+                </li>
               </ul>
             </div>
             <!-- List 2 -->
-            <div class="col">
-              <ul class="list-unstyled">
-                <li>Lorem ipsum dolor sit amet</li>
-                <li>Consectetur adipiscing elit</li>
-                <li>Integer molestie lorem at massa</li>
-                <li>Facilisis in pretium nisl aliquet</li>
-                <li>Faucibus porta lacus fringilla vel</li>
-                <li>Aenean sit amet erat nunc</li>
-                <li>Eget porttitor lorem</li>
-              </ul>
+
+            <div class="col-md-4 col-sm-6">
+              <h4>Subscribe for our newletter:</h4>
+              <form>
+                <div class="form-group">
+                  <label for="exampleFormControlInput1">Email address</label>
+                  <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                </div>
+              </form>
             </div>
             <!-- List 3 -->
           </div>

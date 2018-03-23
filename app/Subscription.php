@@ -8,9 +8,9 @@ class Subscription extends Model
 {
     // 
     protected $fillable = [
-      'name', 'membershipFee', 'dailyearnings',
-      'weeklyEarnings', 'monthlyEarnings', 'annualEarnings'
-      'referralEarnings' 
+      'name', 'membershipFee', 'dailyEarnings',
+      'weeklyEarnings', 'monthlyEarnings', 'annualEarnings',
+      'referralEarnings',
     ];
 
     public function investments()

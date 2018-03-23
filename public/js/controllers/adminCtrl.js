@@ -39,8 +39,7 @@ harricottonApp
 
         $scope.users = $scope.userManagementdata.pop();
         $scope.roles = $scope.userManagementdata.pop();
-
-        console.log($scope.users);
+        
       }, 
       function  (error) {
         // body...
@@ -72,15 +71,15 @@ harricottonApp
             .then(function (response) {
               // body...
               UsersManagement.get()
-                  .then(function (response) {
-                    // body...
-                    $scope.userManagementdata = response.data;
+                .then(function (response) {
+                  // body...
+                  $scope.userManagementdata = response.data;
 
-                    $scope.users = $scope.userManagementdata.pop();
-                    $scope.roles = $scope.userManagementdata.pop();
+                  $scope.users = $scope.userManagementdata.pop();
+                  $scope.roles = $scope.userManagementdata.pop();
 
-                    $location.path('/superadmin/users');
-                  });
+                  $location.path('/superadmin/users');
+                });
             }, function (error) {
               // body...
               console.log(error);
@@ -92,7 +91,109 @@ harricottonApp
         UsersManagement.delete(id)
           .then(function(response) {
             // body...
-            $route.reload();
+            UsersManagement.get()
+              .then(function (response) {
+                // body...
+                $scope.userManagementdata = response.data;
+
+                $scope.users = $scope.userManagementdata.pop();
+                $scope.roles = $scope.userManagementdata.pop();
+
+              });
+          }, 
+          function  (error) {
+            // body...
+            console.log(error);
+          });
+      }
+
+  })
+  .controller('SubscriptionCtrl', function SubscriptionCtrl ($scope, $http, Roles, SubscriptionManagement, $location, $stateParams) {
+    // body...
+    $scope.subscriptions = {};
+    
+    // object to hold all the data for the new user form
+    $scope.subscriptionData = {};
+
+    SubscriptionManagement.get()
+      .then(function(response) {
+        // body...
+        $scope.subscriptions = response.data;
+      }, 
+      function  (error) {
+        // body...
+        console.log(error);
+      });
+
+      $scope.findOne = function () {
+
+        id = $stateParams.id;
+
+        SubscriptionManagement.show(id)
+          .then(function(response) {
+            // body...
+            $scope.subscription = response.data;
+          }, 
+          function  (error) {
+            // body...
+            console.log(error);
+          });   
+      }
+
+      $scope.updateSubscription = function () {
+
+        id = $stateParams.id;
+
+        SubscriptionManagement.update($scope.subscription, id)
+          .then(function(response) {
+            // body...
+            SubscriptionManagement.get()
+              .then(function (response) {
+                // body...
+                $scope.subscriptions = response.data;
+
+              });
+
+            $location.path('/superadmin/subscription');
+          }, 
+          function  (error) {
+            // body...
+            console.log(error);
+          });   
+      }
+
+      // function to handle submitting the form
+      // CREATE A User ================
+      $scope.createSubscription = function  () {
+
+        // save the user. pass in user data from the form
+        // use the function we created in our service
+        SubscriptionManagement.save($scope.subscriptionData)
+            .then(function (response) {
+              // body...
+              SubscriptionManagement.get()
+                .then(function (response) {
+                  // body...
+                  $scope.subscriptions = response.data;
+
+                });
+            }, function (error) {
+              // body...
+              console.log(error);
+            })
+      };
+
+      $scope.deleteSubscription = function (id) {
+
+        SubscriptionManagement.delete(id)
+          .then(function(response) {
+            // body...
+            SubscriptionManagement.get()
+              .then(function (response) {
+                // body...
+                $scope.subscriptions = response.data;
+
+              });
           }, 
           function  (error) {
             // body...

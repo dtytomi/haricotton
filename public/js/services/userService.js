@@ -56,4 +56,30 @@ harricottonApp
       }
 
     }
+  })
+
+  .factory('Invest', function ($http, constants) {
+    return {
+
+      getSubscriptions: function() {
+        // body...
+        return $http.get(constants.API_URL + 'subscriptions/');
+      },
+
+      get: function() {
+        // body...
+        return $http.get(constants.API_URL + 'subscriptions/');
+      },
+
+      save: function(helpData) {
+        // body...
+        return $http({
+          method: 'POST',
+          url: constants.API_URL + 'investments/',
+          headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+          data: $.param(helpData)
+        });
+      }
+
+    }
   });

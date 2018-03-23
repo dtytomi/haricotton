@@ -9,7 +9,8 @@ class Investment extends Model
     //
     protected $fillable = [
         'amountPaid', 'subscription_id',
-        'intrestRate' 'balance', 'user_id'
+        'intrestRate' 'balance', 'user_id', 
+        'investmentPaid', 'modeOfPayment'
     ];
 
     public function Investments()

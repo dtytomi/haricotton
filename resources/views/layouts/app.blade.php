@@ -20,31 +20,22 @@
 </head>
 <body>
   <div id="app">
-    <nav class="navbar navbar-default navbar-static-top navbar-custom" role="navigation">
+
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
       <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="{{ url('/') }}">
-            {{ config('app.name', 'Laravel') }}
-          </a>
-        </div>
-        
+        <a class="navbar-brand" href="{{ url('/') }}">
+          {{ config('app.name', 'Laravel') }}
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="nav navbar-nav navbar-right">
-            <!-- Authentication Links -->
+          <ul class="navbar-nav  ml-auto">
             @guest
               <li class="active">
                 <a  href="{{ route('login') }}">Login</a>
               </li>
-              <!-- Commented out Registration Link -->
-              <!-- <li class="active">
-                <a  href="{{ route('register') }}">Register</a>
-              </li> -->
             @else
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -65,7 +56,9 @@
         </div>
       </div>
     </nav>
+
     @yield('content')
+    
   </div>
 
   <!-- jQuery -->

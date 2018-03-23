@@ -33,7 +33,7 @@
     <![endif]-->
 </head>
 
-<body class="fixed-nav sticky-footer bg-dark" id="page-top" data-ng-controller="refreshCtrl">
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">
   <!-- Navigation-->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
     <a class="navbar-brand" href="{{ url('/') }}">{{ config('app.name', 'Laravel') }}</a>
@@ -95,6 +95,9 @@
           <ul class="sidenav-second-level collapse" id="collapseInvt">
             <li>
               <a href="#">View Investors</a>
+            </li>
+            <li>
+              <a ui-sref="subscription" ui-sref-active="active">Subscriptions</a>
             </li>
           </ul>
         </li>
@@ -158,7 +161,6 @@
 
     <!-- all angular resources will be loaded from the /public folder -->    
     <script src="{{URL::to('js/app.module.js')}}"></script>
-    <script src="{{URL::to('js/controllers/refreshCtrl.js')}}"></script>
     <script src="{{URL::to('js/controllers/adminCtrl.js')}}"></script>
     <script src="{{URL::to('js/services/adminService.js')}}"></script>
 

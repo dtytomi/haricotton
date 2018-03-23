@@ -2,6 +2,7 @@
 
 namespace Haricotton;
 
+use Illuminate\Support\Facades\Config;
 use Zizaco\Entrust\Traits\EntrustUserTrait;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 

@@ -17,8 +17,8 @@ class CreateSubscriptionsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->integer('membershipFee');
-            $table->integer('dailyEarnings');
-            $table->integer('weeklyEarnings');
+            $table->float('dailyEarnings');
+            $table->float('weeklyEarnings');
             $table->integer('monthlyEarnings');
             $table->integer('annualEarnings');
             $table->integer('referralEarnings');

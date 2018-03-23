@@ -6,7 +6,9 @@ use Log;
 use Auth;
 use Haricotton\User;
 use Haricotton\Role;
+use Haricotton\Permission;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Haricotton\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 
@@ -34,7 +36,9 @@ class UserManagementController extends Controller
       # code...
       $roles = Role::get()->toArray();
       $data = User::whereHas('roles', function($q){
-          $q->where('name', 'role-superadmin');})->get();
+          $q->where('name', 'role-superadmin')
+            ->orWhere('name', 'role-admin')
+            ->orWhere('name', 'role-staff');})->with('roles')->get();
       return array($roles, $data);
     }
 
@@ -58,41 +62,31 @@ class UserManagementController extends Controller
 
       $user = User::create($input);
 
-      $role = Role::find($request->input('role'));
+      $role = Role::find($request->input('role'))->first();
+
+      $roleName = $role->{'name'};
+
+      if ($roleName == 'role-admin') { 
+
+        $permission = Permission::where('name', 'users')->first();
+        if (!$role->perms()->get()->contains('id', $permission->id)) {
+            $role->attachPermission($permission);
+        }
+
+      } elseif ($roleName == 'role-superadmin') {
+         $permission = Permission::where('name', 'users')->first();
+         if (!$role->perms()->get()->contains('id', $permission->id)) {
+            $role->attachPermission($permission);
+          }
+
+      } elseif ($roleName == 'role-staff') {
+        $permission = Permission::where('name', 'staff')->first();
+        if (!$role->perms()->get()->contains('id', $permission->id)) {
+            $role->attachPermission($permission);
+        }
+      }
 
       $user->roles()->attach($role);
-
-      $designation = $role->pluck('name');
-
-      Log::info('mesaage designation', array('context' => $designation));
-
-      if ($designation == "role-admin") {
-          $user->attachPermission('users');
-      } elseif ($designation == "role-superadmin") {
-          $user->attachPermission('users');
-      } elseif ($designation == "role-staff") {
-          $user->attachPermission('staff');
-      }
-
-
-      switch ($designation) {
-        case "role-admin":
-          $user->attachPermission('users');
-          break;
-        
-        case "role-superadmin":
-          $user->attachPermission('users');
-          Log::info('mesaage permission attachment', array('context' => $user));
-          break;
-
-        case "role-staff":
-          $user->attachPermission('staff');
-          break;
-
-        default:
-          Log::info('message default: I did not attach anything', array('context' => $user));
-          break;
-      }
   
       $user->save();
 
@@ -109,7 +103,7 @@ class UserManagementController extends Controller
     public function show($id)
     {
       $user = User::find($id);
-      return view('users.show', compact('user'));
+      return $user;
     }
 
     /**
@@ -156,7 +150,16 @@ class UserManagementController extends Controller
     */
     public function destroy($id)
     {
-      $user = User::find($id)->delete();
-      return $user;
+      $currentUser = Auth::user();
+      $user = User::findOrFail($id);
+
+      if ($user->id != $currentUser->id) {
+          
+          $user->delete();
+
+          return response()->json(['success' => true]);
+      }
+
+       return response()->json(['success' => false]);
     }
 }

@@ -22,6 +22,8 @@ class CreateInvestmentsTable extends Migration
             $table->foreign('subscription_id')->references('id')->on('subscriptions');
             $table->string('earningMethod');
             $table->integer('balance');
+            $table->string('investmentPaid')->nullable();
+            $table->string('modeOfPayment')->nullable();
             $table->timestamps();
         });
     }

@@ -3,18 +3,22 @@
 <link rel="stylesheet" href="{{URL::asset('css/register.css')}}"> 
 
 @section('content')
-<section class="register holderjs" id="sample3">
+<section class="register">
   <div class="overlay">
     <div class="container">
 
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
+      <br /> <br />
+      <br /> <br />
+      <br /> <br />
+      <br /> <br />
 
       <div class="card border-success col-6" style="margin-left: 25%;">
-        <div class="card-header bg-transparent border-success">Register</div>
+        <div class="card-header bg-transparent border-success">
+          Register
+          <a class="close" aria-label="Close" href="/login" role="button" data-toggle="tooltip" data-placement="top" title="Close">
+            <span aria-hidden="true">&times;</span>
+          </a>
+        </div>
         <div class="card-body text-success">
           <form class="form-horizontal" method="POST" action="{{ route('register') }}">
             {{ csrf_field() }}

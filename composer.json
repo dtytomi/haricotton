@@ -10,8 +10,7 @@
         "laravel/framework": "5.6.*",
         "laravel/tinker": "~1.0",
         "unicodeveloper/laravel-paystack": "^1.0",
-        "zizaco/entrust": "dev-laravel-5",
-        "unicodeveloper/laravel-paystack": "1.0.*"
+        "zizaco/entrust": "dev-laravel-5"
     },
     "require-dev": {
         "filp/whoops": "~2.0",

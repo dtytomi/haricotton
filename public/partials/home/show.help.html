@@ -1,13 +1,28 @@
 <section ng-controller="helpCtrl" data-ng-init="findOne()">
-  <dl class="row">
-    <dt class="col-sm-3">Subject:</dt>
-    <dd class="col-sm-9">
-      <input class="form-control" type="text" ng-value="help.subject" placeholder="Readonly input here…" readonly>
-    </dd>
+  <!-- Breadcrumbs-->
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a ui-sref="help">help</a>
+    </li>
+    <li class="breadcrumb-item active">Message</li>
+  </ol>
 
-    <dt class="col-sm-3">Message:</dt>
-    <dd class="col-sm-9">
-      <textarea type="text" name="subject" id="subject" class="form-control" placeholder="Message" rows="3" readonly>{{help.message}}</textarea>
-    </dd>
-  </dl>
+  <div class="card text-center w-75">
+    <div class="card-body">
+      <dl class="row">
+        <dt class="col-sm-3">Subject:</dt>
+        <dd class="col-sm-9">
+          <input class="form-control" type="text" value="<%help.subject%>" placeholder="Readonly input here…" readonly>
+        </dd>
+
+        <dt class="col-sm-3">Message:</dt>
+        <dd class="col-sm-9">
+          <textarea type="text" name="subject" id="subject" class="form-control" placeholder="Message" rows="3" readonly><%help.message%></textarea>
+        </dd>
+      </dl>
+    </div>
+    <div class="card-footer text-muted">
+      <%help.updated_at%>
+    </div>
+  </div>
 </section>

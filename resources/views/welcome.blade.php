@@ -20,7 +20,7 @@
         <link rel="stylesheet" type="text/css" href="{{URL::asset('css/arc.css')}}">
         
     </head>
-    <body>
+    <body class="bg-secondary text-dark">
       <nav id="mainNav" data-spy="affix" class="navbar fixed-top navbar-expand-lg navbar-light navbar-custom">
         <div class="container">
           <a class="navbar-brand" href="#">Haricotton Investment Club</a>
@@ -55,10 +55,10 @@
         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <img class="d-block w-100" src="{{URL::asset('img/hero.png')}}" data-src="holder.js/100px500?text=Add \n 1 line breaks \n anywhere." src="" alt="First slide">
+              <img class="d-block w-100" src="{{URL::asset('img/hr.png')}}" data-src="holder.js/100px500?text=Add \n 1 line breaks \n anywhere." src="" alt="First slide">
             </div>
             <div class="carousel-item">
-              <img class="d-block w-100" src="{{URL::asset('img/cropped.jpg')}}" data-src="holder.js/100px500?text=Add \n 2 line breaks \n anywhere." src="..." alt="Second slide">
+              <img class="d-block w-100" src="{{URL::asset('img/crop.jpg')}}" data-src="holder.js/100px500?text=Add \n 2 line breaks \n anywhere." src="..." alt="Second slide">
             </div>
             <div class="carousel-item">
               <img class="d-block w-100" src="{{URL::asset('img/nationalism.jpg')}}" data-src="holder.js/100px500?text=Add \n 3 line breaks \n anywhere." src="..." alt="Third slide">
@@ -86,7 +86,7 @@
                   </span>
                   <h4 class="card-title">Ordinary</h4>
                   <p class="card-text">The Total Investment including membership fee is ₦5250 or $15</p>
-                  <a href="#" class="">Learn More <i class="fas fa-angle-right fa-1x"></i></a>
+                  <a href="/about">Learn More <i class="fas fa-angle-right fa-1x"></i></a>
                 </div>
               </div>
             </div>
@@ -99,7 +99,7 @@
                   </span>
                   <h4 class="card-title">Bronze</h4>
                   <p class="card-text">The Total Investment including membership fee is ₦10,500 or $30.</p>
-                  <a href="#" class="">Learn More <i class="fas fa-angle-right fa-1x"></i></a>
+                  <a href="/about">Learn More <i class="fas fa-angle-right fa-1x"></i></a>
                 </div>
               </div>
             </div>
@@ -112,7 +112,7 @@
                   </span>
                   <h4 class="card-title">Silver</h4>
                   <p class="card-text">The Total Investment including membership fee is ₦21,000 or $60.</p>
-                  <a href="#" class="">Learn More <i class="fas fa-angle-right fa-1x"></i></a>
+                  <a href="/about">Learn More <i class="fas fa-angle-right fa-1x"></i></a>
                 </div>
               </div> 
             </div>
@@ -125,7 +125,7 @@
                   </span>
                   <h4 class="card-title">Gold</h4>
                   <p class="card-text">The Total Investment including membership fee is ₦42000 or $120.</p>
-                  <a href="#" class="">Learn More <i class="fas fa-angle-right fa-1x"></i></a>
+                  <a href="/about">Learn More <i class="fas fa-angle-right fa-1x"></i></a>
                 </div>
               </div>  
             </div>
@@ -138,7 +138,7 @@
                   </span>
                   <h4 class="card-title">Sapphire</h4>
                   <p class="card-text">The Total Investment including membership fee is ₦72,000 or $1920.</p>
-                  <a href="#" class="">Learn More <i class="fas fa-angle-right fa-1x"></i></a>
+                  <a href="/about">Learn More <i class="fas fa-angle-right fa-1x"></i></a>
                 </div>
               </div>  
             </div>
@@ -151,7 +151,7 @@
                   </span>
                   <h4 class="card-title">Diamond</h4>
                   <p class="card-text">The Total Investment including membership fee is ₦84,000 or $240.</p>
-                  <a href="#" class="">Learn More <i class="fas fa-angle-right fa-1x"></i></a>
+                  <a href="/about">Learn More <i class="fas fa-angle-right fa-1x"></i></a>
                 </div>
               </div>
             </div>
@@ -164,7 +164,7 @@
                   </span>
                   <h4 class="card-title">Platinum</h4>
                   <p class="card-text">The Total Investment including membership fee is ₦168,000 or $480.</p>
-                  <a href="#" class="">Learn More <i class="fas fa-angle-right fa-1x"></i></a>
+                  <a href="/about">Learn More <i class="fas fa-angle-right fa-1x"></i></a>
                 </div>
               </div>
             </div>
@@ -177,7 +177,7 @@
                   </span>
                   <h4 class="card-title">Onyx</h4>
                   <p class="card-text">The Total Investment including membership fee is ₦336,000 or $960.</p>
-                  <a href="#" class="">Learn More <i class="fas fa-angle-right fa-1x"></i></a>
+                  <a href="/about">Learn More <i class="fas fa-angle-right fa-1x"></i></a>
                 </div>
               </div>
             </div>
@@ -206,32 +206,47 @@
                  Haricotton is a business developer that concerned with the analytical preparation of potential growth opportunities for Artisans and business individuals through financial aid as well as the subsequent support and monitoring.
                 We are business developer with tools to address the business development tasks, capable of implementing the growth opportunity successfully.
               </p>
+              <br />
+              <br />
+              <div class="col offset-md-5 col-md-3">
+                <a href="/about" role="button" class="btn btn-block btn-lg btn-warning text-white">Learn More!</a>
+              </div>
             </div>
           </div>
           <!-- Row 2 -->
         </div>
       </section>
 
-      <aside class="feature holderjs" id="sample2">
-        <div class="Overlay">
-          <div class="container">
-            <!-- <img data-src="holder.js/100px100?text=Aside." src="..." alt="Tag Line"> -->
+       <!-- Call to Action -->
+      <section class="call-to-action text-white text-center">
+        <div class="overlay"></div>
+        <div class="container">
+          <div class="row">
+            <div class="col-xl-9 mx-auto">
+              <h2 class="mb-4">Ready to get started? Sign up now!</h2>
+            </div>
+            <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
+              <form>
+                <div class="form-row">
+                  <div class="col-12 col-md-9 mb-2 mb-md-0">
+                    <input type="email" class="form-control form-control-lg" placeholder="Enter your email...">
+                  </div>
+                  <div class="col-12 col-md-3">
+                    <button type="submit" class="btn btn-block btn-lg btn-primary">Sign up!</button>
+                  </div>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
-      </aside>
+      </section>
 
-      <footer>
+      <footer class="footer">
         <div class="container">
           <div class="row">
 
             <div class="col-md-4 col-sm-6">
-              <h4>Location:</h4>
-              <address>
-                <strong>Haricotton.</strong><br>
-                795 Folsom Ave, Suite 600<br>
-                San Francisco, CA 94107<br>
-                <abbr title="Phone">P:</abbr> (123) 456-7890
-              </address>
+              
             </div>
             <!-- List 1 -->
 
@@ -239,31 +254,33 @@
               <h4>Follow Us:</h4>
               <ul class="list-unstyled list-inline list-social-icons">
                 <li class="list-inline-item">
-                    <a href="#"><i class="fab fa-facebook-square fa-2x"></i></a>
+                    <a href="#" style="color: #3b5999;"><i class="fab fa-facebook-square fa-2x"></i></a>
                 </li>
                 <li class="list-inline-item">
-                    <a href="#"><i class="fab fa-twitter-square fa-2x"></i></a>
+                    <a href="#" style="color: #55acee;"><i class="fab fa-twitter-square fa-2x"></i></a>
                 </li>
                 <li class="list-inline-item">
-                    <a href="#"><i class="fab fa-google-plus-square fa-2x"></i></a>
+                    <a href="#" style="color: #dd4b39;"><i class="fab fa-google-plus-square fa-2x"></i></a>
                 </li>
               </ul>
             </div>
             <!-- List 2 -->
 
             <div class="col-md-4 col-sm-6">
-              <h4>Subscribe for our newletter:</h4>
-              <form>
-                <div class="form-group">
-                  <label for="exampleFormControlInput1">Email address</label>
-                  <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-                </div>
-              </form>
+              <address>
+                <strong>Haricotton.</strong><br>
+                Suite 57B Praise Plaza,<br>
+                Iwo Road, Ibadan<br>
+                <abbr title="Phone">P:</abbr> 08144799879, 0906878383
+              </address>
             </div>
             <!-- List 3 -->
           </div>
         </div>
       </footer>
+      <nav class="navbar navbar-light bg-dark">
+        <p class="text-white small mb-4 mb-lg-0">&copy; Haricotton Investment Club 2018. All Rights Reserved.</p>
+      </nav>
 
       <!-- jQuery -->
       <script src="{{ URL::to('vendor/jquery/jquery.min.js') }}"></script>

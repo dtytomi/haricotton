@@ -2,7 +2,6 @@
 
 namespace Haricotton\Http\Controllers\Admin;
 
-use Log;
 use Auth;
 use Haricotton\User;
 use Haricotton\Role;

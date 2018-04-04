@@ -1,4 +1,4 @@
-<section>
+<section class="container" ng-controller="investCtrl">
   <!-- Breadcrumbs-->
   <ol class="breadcrumb">
     <li class="breadcrumb-item">
@@ -7,6 +7,42 @@
     <li class="breadcrumb-item active">Balance</li>
   </ol>
 
-  <a class="btn btn-primary btn-sm" ui-sref="payment" ui-sref-active="active" role="button"><i class="far fa-credit-card"></i> Make Investment</a>
+  <a class="btn btn-primary btn-sm" ui-sref="payment" ui-sref-active="active" role="button">
+    <i class="far fa-credit-card"></i> Make Investment
+  </a>
 
+  <br />
+  <br />
+  <div class="card mb-3" ng-repeat="investment in investments">
+    <div class="card-header">
+      <i class="fas fa-table"></i>  Investment Summary
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <tbody>
+            <tr>
+              <td class="w-25 p-3">Package Name</td>
+              <td class="w-25 p-3"><%investment.subscription.name%></td>
+            </tr>
+            <tr>
+              <td class="w-25 p-3">Amount Invested</td>
+              <td class="w-25 p-3"><%investment.investmentPaid%></td>
+            </tr>
+            <tr >
+              <td class="w-25 p-3">Earning Periods</td>
+              <td class="w-25 p-3"><%investment.earningMethod%></td>
+            </tr>
+            <tr>
+              <td class="w-25 p-3">Status</td>
+              <td class="w-25 p-3"><%investment.status%></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="card-footer text-muted">
+      <%investment.updated_at%>
+    </div>
+  </div>
 </section>

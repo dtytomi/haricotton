@@ -7,48 +7,51 @@
     <li class="breadcrumb-item active">Profile</li>
   </ol>
 
-  <dl class="row">
+  <div class="card w-75">
+    <div class="card-body">
+      <dl class="row">
+        <dt class="col-sm-3">Bank:</dt>
+        <dd class="col-sm-9">
+          <input class="form-control" type="text" value="<%user.bankName%>" placeholder="" readonly />
+        </dd>
 
-    <dt class="col-sm-3">Bank:</dt>
-    <dd class="col-sm-9">
-      <input class="form-control" type="text" ng-value="user.bankName" placeholder="Readonly input here…" readonly />
-    </dd>
+        <dt class="col-sm-3">Account Name:</dt>
+        <dd class="col-sm-9">
+          <input class="form-control" type="text" value="<%user.acctName%>" placeholder="" readonly />
+        </dd>
 
-    <dt class="col-sm-3">Account Name:</dt>
-    <dd class="col-sm-9">
-      <input class="form-control" type="text" ng-value="user.acctName" placeholder="Readonly input here…" readonly />
-    </dd>
+        <dt class="col-sm-3">Account Number:</dt>
+        <dd class="col-sm-9">
+          <input class="form-control" type="text" value="<%user.acctNumber%>" placeholder="" readonly />
+        </dd>
 
-    <dt class="col-sm-3">Account Number:</dt>
-    <dd class="col-sm-9">
-      <input class="form-control" type="text" ng-value="user.acctNumber" placeholder="Readonly input here…" readonly />
-    </dd>
+        <dt class="col-sm-3">Phone:</dt>
+        <dd class="col-sm-9">
+          <input class="form-control" type="text" value="<%user.phoneNumber%>" placeholder="" readonly />
+        </dd>
 
-    <dt class="col-sm-3">Phone:</dt>
-    <dd class="col-sm-9">
-      <input class="form-control" type="text" ng-value="user.phoneNumber" placeholder="Readonly input here…" readonly />
-    </dd>
+        <dt class="col-sm-3">Address:</dt>
+        <dd class="col-sm-9">
+          <input class="form-control" type="text" value="<%user.address%>" placeholder="" readonly />
+        </dd>
+        <dt class="col-sm-3">City:</dt>
+        <dd class="col-sm-9">
+          <input class="form-control" type="text" value="<%user.city%>" placeholder="" readonly />
+        </dd>
+        <dt class="col-sm-3">State:</dt>
+        <dd class="col-sm-9">
+          <input class="form-control" type="text" value="<%user.state%>" placeholder="" readonly />
+        </dd>
+        <dt class="col-sm-3">Country:</dt>
+        <dd class="col-sm-9">
+          <input class="form-control" type="text" value="<%user.country%>" placeholder="" readonly />
+        </dd>
+        
+      </dl> 
 
-    <dt class="col-sm-3">Address:</dt>
-    <dd class="col-sm-9">
-      <input class="form-control" type="text" ng-value="user.address" placeholder="Readonly input here…" readonly />
-    </dd>
-    <dt class="col-sm-3">City:</dt>
-    <dd class="col-sm-9">
-      <input class="form-control" type="text" ng-value="user.city" placeholder="Readonly input here…" readonly />
-    </dd>
-    <dt class="col-sm-3">State:</dt>
-    <dd class="col-sm-9">
-      <input class="form-control" type="text" ng-value="user.state" placeholder="Readonly input here…" readonly />
-    </dd>
-    <dt class="col-sm-3">Country:</dt>
-    <dd class="col-sm-9">
-      <input class="form-control" type="text" ng-value="user.country" placeholder="Readonly input here…" readonly />
-    </dd>
-    
-  </dl> 
-
-  <a class="btn btn-outline-primary offset-md-3" ui-sref="editProfile({id: id})" role="button">Edit Profile</a>
+      <a class="btn btn-outline-primary offset-md-3" ui-sref="editProfile({id: id})" role="button">Edit Profile</a>
+    </div>
+  </div>
 
   <br />
   <br />

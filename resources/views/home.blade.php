@@ -54,7 +54,7 @@
           <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Disabled">
             <a class="nav-link" ui-sref="balance" ui-sref-active="active">
               <i class="fas fa-fw fa-balance-scale"></i>
-              <span class="nav-link-text">Balance</span>  
+              <span class="nav-link-text">Investment</span>  
             </a>
           </li>
           <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
@@ -181,6 +181,17 @@
 
     <!-- ANGULAR -->
     <script src="{{ URL::to('vendor/angular/angular.min.js') }}"></script>
+
+    <!-- Angular Material requires Angular.js Libraries -->
+    <script src="{{ URL::to('vendor/angular/angular-animate.min.js') }}"></script>
+    <script src="{{ URL::to('vendor/angular/angular-aria.min.js') }}"></script>
+    <script src="{{ URL::to('vendor/angular/angular-messages.min.js') }}"></script>
+
+    <!-- Angular Material Library -->
+    <script src="{{ URL::to('vendor/material/angular-material.min.js') }}"></script>
+
+    <!-- Angular Paystack Library -->
+    <script src="{{ URL::to('vendor/paystack/angular-paystack.min.js') }}"></script>
 
     <!-- NG Route -->
     <script src="{{ URL::to('vendor/angular/angular-route.min.js') }}"></script>

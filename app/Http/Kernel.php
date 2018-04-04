@@ -19,6 +19,7 @@ class Kernel extends HttpKernel
         \Haricotton\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
         \Haricotton\Http\Middleware\TrustProxies::class,
+        \Haricotton\Http\Middleware\CheckReferral::class,
     ];
 
     /**
@@ -36,7 +37,6 @@ class Kernel extends HttpKernel
             \Haricotton\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
             \Haricotton\Http\Middleware\Cors::class,
-
         ],
 
         'api' => [

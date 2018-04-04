@@ -7,65 +7,70 @@
     <li class="breadcrumb-item active">Create User</li>
   </ol>
 
-  <form role="form" ng-submit="createUser()" name="newUser" novalidate> 
-
-    <div class="form-group row">
-      <label for="name" class="col-sm-2 col-form-label">Name</label>
-      <p class="text-danger" ng-show="newUser.name.$error.required">*</p>
-      <div class="col-xs-6 col-sm-6 col-md-9">
-        <input type="text" name="name" id="name" class="form-control input-sm" placeholder="Name" ng-model="userData.name">
-      </div>
-    </div>
-    
-    <div class="form-group row">
-      <label for="email" class="col-sm-2 col-form-label">Email Address</label>
-      <p class="text-danger" ng-show="newUser.email.$error.required">*</p>
-      <div class="col-xs-6 col-sm-6 col-md-9">
-        <input type="email" name="email" id="email" class="form-control input-sm" placeholder="Email" ng-model="userData.email">
-      </div>
-    </div>
-
-    
-    <div class="form-group row" ng-class="{'has-error': userData.role.$invalid && !formData.role.$pristine}">
-      <label for="role" class="col-sm-2 col-form-label">Role</label>
-      <p class="text-danger" ng-show="newUser.city.$error.required">*</p>
-      <div class="col-xs-6 col-sm-6 col-md-9">
-        <select class="form-control" ng-model="userData.role" ng-options="role.display_name for role in roles"></select>
-      </div>
-    </div>
-
-    <fieldset class="form-group">
-
-      <div class="row" ng-class="{'has-error': userData.password.$invalid && !formData.password.$pristine}">
-          <label for="password" class="col-sm-2 col-form-label">Password</label>
-          <p class="text-danger" ng-show="newUser.password.$error.required">*</p>
+  <div class="card w-75">
+    <div class="card-body">
+      <form role="form" ng-submit="createUser()" name="newUser" novalidate> 
+        <div class="form-group row">
+          <label for="name" class="col-sm-3 col-form-label">Name</label>
+          <p class="text-danger" ng-show="newUser.name.$error.required">*</p>
           <div class="col-xs-6 col-sm-6 col-md-9">
-            <input type="password" name="password" id="password" class="form-control input-sm" placeholder="Password" ng-model="userData.password" ng-minlength="8" ng-maxlength="20" ng-pattern="/(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z])/" required/>
-            <div class="invalid-feedback" ng-show="newUser.password.$error.minlength">
-              Password must be between 8 and 20 characters.
-            </div>
-            <div class="invalid-feedback" ng-show="newUser.password.$error.pattern">
-              Must contain one lower &amp; uppercase letter, and one non-alpha character (a number or a symbol.)
-            </div>
+            <input type="text" name="name" id="name" class="form-control input-sm" placeholder="Name" ng-model="userData.name">
           </div>
-      </div>
-    </fieldset>
-    <fieldset class="form-group">
-      <div class="row" ng-class="{'has-error': userData.confirmPassword.$invalid && !formData.confirmPassword.$pristine}">
+        </div>
         
-          <label for="confirmPassword" class="col-sm-2 col-form-label">Confirm Password</label>
-          <p class="text-danger" ng-show="newUser.confirmPassword.$error.required">*</p>
+        <div class="form-group row">
+          <label for="email" class="col-sm-3 col-form-label">Email Address</label>
+          <p class="text-danger" ng-show="newUser.email.$error.required">*</p>
           <div class="col-xs-6 col-sm-6 col-md-9">
-            <input type="password" name="confirmPassword" id="confirmPassword" class="form-control input-sm" ng-model="userData.confirmPassword" placeholder="confirmPassword" valid-password-c="userData.password" required />
-            <div class="invalid-feedback" ng-show="newUser.confirmPassword.$error.noMatch">
-              Password do not match.
-            </div>
+            <input type="email" name="email" id="email" class="form-control input-sm" placeholder="Email" ng-model="userData.email">
           </div>
-       
-      </div>
+        </div>
 
-    </fieldset>
-    
-    <input type="submit" value="Submit" ng-disabled="newUser.$invalid" class="btn btn-info btn-block">
-  </form>
+        
+        <div class="form-group row" ng-class="{'has-error': userData.role.$invalid && !formData.role.$pristine}">
+          <label for="role" class="col-sm-3 col-form-label">Role</label>
+          <p class="text-danger" ng-show="newUser.city.$error.required">*</p>
+          <div class="col-xs-6 col-sm-6 col-md-9">
+            <select class="form-control" ng-model="userData.role" ng-options="role.display_name for role in roles"></select>
+          </div>
+        </div>
+
+        <fieldset class="form-group">
+
+          <div class="row" ng-class="{'has-error': userData.password.$invalid && !formData.password.$pristine}">
+              <label for="password" class="col-sm-3 col-form-label">Password</label>
+              <p class="text-danger" ng-show="newUser.password.$error.required">*</p>
+              <div class="col-xs-6 col-sm-6 col-md-8">
+                <input type="password" name="password" id="password" class="form-control input-sm" placeholder="Password" ng-model="userData.password" ng-minlength="8" ng-maxlength="20" ng-pattern="/(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z])/" required/>
+                <div class="invalid-feedback" ng-show="newUser.password.$error.minlength">
+                  Password must be between 8 and 20 characters.
+                </div>
+                <div class="invalid-feedback" ng-show="newUser.password.$error.pattern">
+                  Must contain one lower &amp; uppercase letter, and one non-alpha character (a number or a symbol.)
+                </div>
+              </div>
+          </div>
+        </fieldset>
+        <fieldset class="form-group">
+          <div class="row" ng-class="{'has-error': userData.confirmPassword.$invalid && !formData.confirmPassword.$pristine}">
+            
+              <label for="confirmPassword" class="col-sm-3 col-form-label">Confirm Password</label>
+              <p class="text-danger" ng-show="newUser.confirmPassword.$error.required">*</p>
+              <div class="col-xs-6 col-sm-6 col-md-8">
+                <input type="password" name="confirmPassword" id="confirmPassword" class="form-control input-sm" ng-model="userData.confirmPassword" placeholder="confirmPassword" valid-password-c="userData.password" required />
+                <div class="invalid-feedback" ng-show="newUser.confirmPassword.$error.noMatch">
+                  Password do not match.
+                </div>
+              </div>
+           
+          </div>
+
+        </fieldset>
+        <div class="col-md-3 offset-md-8">
+          <input type="submit" value="Submit" ng-disabled="newUser.$invalid" class="btn btn-info">
+        </div>
+      </form>
+    </div>
+  </div>
+
 </section>

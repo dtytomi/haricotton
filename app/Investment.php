@@ -9,26 +9,17 @@ class Investment extends Model
     //
     protected $fillable = [
         'amountPaid', 'subscription_id',
-        'intrestRate' 'balance', 'user_id', 
+        'user_id', 'earningMethod',
         'investmentPaid', 'modeOfPayment'
     ];
 
-    public function Investments()
+    public function user()
     {
-      # code...
-      return $this->belongsTo(Investment::class);
+        return $this->belongsTo('Haricotton\User');
     }
 
-    public function scopeOfSubscription($query, $subscriptionId)
+     public function subscription()
     {
-      # code...
-      return $query->where('subscription_id', $subscriptionId);
-    }
-
-    public function getBalance()
-    {
-      # code...
-      // $amountPaid = DB::select('select * from investments where ')
-      // return  $newBalance = DB::table('subscriptionId');
+        return $this->belongsTo('Haricotton\Subscription');
     }
 }

@@ -1,26 +1,41 @@
 @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
 
-.navbar {
-  margin-bottom: 0px ;
-}
-
-.navbar-custom {
-  margin-bottom: 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-  text-transform: uppercase;
-  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  background-color: #fff;
-}
-
-#sample3 {
-  background:url(?holder.js/800x1200?theme=sky) no-repeat
-}
-
 .component1 {
-  padding: 100px 0; 
   color:#fff;
+  height: auto;
+  position: relative;
+  display: table;
+  width: 100%;
+  padding: 100px 0; 
+  background: url(../img/login.jpg) no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 .component2 {
+  padding: 100px 0;
+  height: 100%;
+}
+
+@media (min-width: 768px) {
+  .component1 {
+    height: 100%;
+  }
+ 
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+  background-color: rgba(0,0,0,0.5);
+}
+
+.login {
   padding: 100px 0;
 }

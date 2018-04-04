@@ -6,22 +6,24 @@
 <section >
   <div class="container-fluid">
     <div class="row">
-      <div class="col-lg-7 holderjs component1" id="sample3">
-        <h1 class="text-center">consectetuer adipiscing</h1>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-          incididunt ut labore et dolore magna aliqua. Iaculis nunc sed augue lacus. 
-          Sapien nec sagittis aliquam malesuada. In tellus integer feugiat scelerisque.
-          Quis lectus nulla at volutpat diam ut.
-        </p>
-        <a href="{{ route('register') }}" class="btn btn-outline-light" role="button">Register</a>
-        <div style="margin-top: 34%"></div>
+      <div class="col-lg-7 bg-primary component1">
+        <div class="overlay">
+          <div class="container login">
+            <h1 class="text-center">Haricotton Investment Club</h1>
+            <p>
+              The Club is a platform of placement of capital in expectation of delivery income.
+              <br /> Join us
+            </p>
+            <a href="{{ route('register') }}" class="btn btn-outline-light" role="button">Register</a>
+            <div style="margin-top: 34%"></div>
+          </div>
+        </div>
       </div>
       <div class="col-lg-5 component2">
         <div class="panel panel-default">
           <div class="panel-body">
             <h3 class="text-center">Login</h3>
-            <p >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</p>
+            <p >Provide your login credentials</p>
 
             <!-- Form -->
             <form class="form-horizontal" method="POST" action="{{ route('login') }}">
@@ -32,7 +34,7 @@
                   <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" 
                     placeholder="E-Mail Address" required autofocus>
                   @if ($errors->has('email'))
-                    <span class="help-block">
+                    <span class="help-block text-danger">
                       <strong>{{ $errors->first('email') }}</strong>
                     </span>
                   @endif

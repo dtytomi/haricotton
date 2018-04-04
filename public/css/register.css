@@ -1,8 +1,9 @@
-section .register {
+section.register {
   width: 100%;
-  height: 80%;
+  height: 100%;
   position: absolute;
   display: table;
+  background: url(../img/reg.jpg) no-repeat center center scroll;
   background-color: black;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -10,15 +11,11 @@ section .register {
   -o-background-size: cover;
 }
 
-#sample3 {
-  background:url(?holder.js/1500x1200?theme=sky) no-repeat
-}
-
 .overlay {
   position: relative;
   top: 0;
   left: 0;
-  height: 92%;
+  height: 100%;
   width: 100%;
   z-index: 1;
   background-color: rgba(0,0,0,0.5);

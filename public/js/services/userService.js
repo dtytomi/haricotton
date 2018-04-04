@@ -1,4 +1,31 @@
 harricottonApp
+  .service('ngCopy', function ($window) {
+      
+    var body = angular.element($window.document.body);
+    var textarea = angular.element('<textarea/>');
+    textarea.css({
+      position: 'fixed',
+      opacity: 0
+    });
+
+    return function (toCopy) {
+      // body...
+      textarea.val(toCopy);
+      body.append(textarea);
+      textarea[0].select();
+
+      try {
+        var successful = document.execCommand('copy');
+        if (!successful) throw successful;
+
+      } catch(err) {
+          window.prompt("Copy to clipboard: Ctrl+C, Enter", toCopy);
+      }
+
+      textarea.remove();
+
+    }
+  })
   .factory('Profile', function ($http, constants) {
     // body...
     return {
@@ -68,16 +95,26 @@ harricottonApp
 
       get: function() {
         // body...
-        return $http.get(constants.API_URL + 'subscriptions/');
+        return $http.get(constants.API_URL + 'investments/');
       },
 
-      save: function(helpData) {
+      save: function(investData) {
         // body...
         return $http({
           method: 'POST',
-          url: constants.API_URL + 'investments/',
+          url: constants.API_URL + 'investments',
           headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-          data: $.param(helpData)
+          data: $.param(investData)
+        });
+      },
+
+      pay: function(paymentData) {
+        // body...
+        return $http({
+          method: 'POST',
+          url: constants.API_URL + 'pay',
+          headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+          data: $.param(paymentData)
         });
       }
 

@@ -2,6 +2,7 @@
 
 namespace Haricotton\Http\Controllers\Auth;
 
+use Cookie;
 use Haricotton\User;
 use Haricotton\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
@@ -62,11 +63,15 @@ class RegisterController extends Controller
      * @return \Haricotton\User
      */
     protected function create(array $data)
-    {
+    {      
+        $referred_by = Cookie::get('referral');
+
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'affiliate_id' => str_random(10),
+            'referred_by' => $referred_by,
         ]);
     }
 }

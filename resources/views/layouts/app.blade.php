@@ -10,6 +10,9 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
+    <!-- Bootstrap core CSS-->
+    <!-- <link rel="stylesheet" type="text/css" href="{{URL::asset('vendor/bootstrap/css/bootstrap.min.css')}}"> -->
+
     <!-- Fontawesome 5 -->
     <script defer src="{{ URL::to('vendor/fontawesome/svg-with-js/js/fontawesome-all.min.js') }}"></script>
 
@@ -18,7 +21,7 @@
     <link rel="stylesheet" href="{{URL::asset('css/base.css')}}">
 
 </head>
-<body>
+<body class="bg-white text-dark">
   <div id="app">
 
     <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
@@ -58,9 +61,7 @@
     </nav>
 
     @yield('content')
-    
   </div>
-
   <!-- jQuery -->
   <script src="{{ URL::to('vendor/jquery/jquery.min.js') }}"></script>
 
@@ -70,6 +71,12 @@
   <!-- Plugin JavaScript -->
   <script src="{{ URL::to('vendor/jquery-easing/jquery.easing.min.js') }}"></script>
   <script src="{{ URL::to('vendor/wow.min.js') }}"></script>
+
+  <script type="text/javascript">
+    window.FontAwesomeConfig = {
+      searchPseudoElements: true,
+    }
+  </script>
 
   <!-- Picture Holder -->
   <script src="{{ URL::to('vendor/holder.js') }}"></script>

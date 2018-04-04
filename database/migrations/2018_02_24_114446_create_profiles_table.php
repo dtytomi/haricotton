@@ -18,7 +18,7 @@ class CreateProfilesTable extends Migration
             $table->integer('user_id')->unsigned()->index();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('acctName');
-            $table->integer('acctNumber');
+            $table->string('acctNumber');
             $table->string('address');
             $table->string('bankName');
             $table->string('city');

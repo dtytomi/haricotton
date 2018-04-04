@@ -17,7 +17,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
 
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'affiliate_id', 'referred_by',
     ];
 
     /**
@@ -47,6 +47,11 @@ class User extends Authenticatable
     public function helps()
     {
         return $this->hasMany('Haricotton\Profile');
+    }
+
+    public function investment()
+    {
+        return $this->hasOne('Haricotton\Investment');
     }
 
 }

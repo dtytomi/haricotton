@@ -149,7 +149,8 @@ harricottonApp
     }
   })
 
-  .controller('investCtrl', function investCtrl( $location, $window, $scope, $http, $stateParams, Invest) {
+  .controller('investCtrl', 
+    function investCtrl( $location, $window, $scope, $stateParams, Invest, Profile) {
     
     $scope.subscriptions = {};
 
@@ -158,61 +159,163 @@ harricottonApp
       singleSelect: null,
       model: null,
       availableOptions: [
-        { name: 'Daily Earnings', value: 'dailyEarnings'},
-        { name: 'Weekly Earnings', value: 'weeklyEarnings'},
-        { name: 'Monthly Earnings', value: 'monthlyEarnings'},
-        { name: 'Annual Earnings', value: 'annualEarnings'}
+        { id: 1, name: 'Weekly Earnings', value: 'Weekly Earnings'},
+        { id: 2, name: 'Monthly Earnings', value: 'Monthly Earnings'}
+      ],
+      items: [
+        { name: 'Bank Teller', value: 'option1'},
+        { name: 'Bank Transfer', value: 'option2'}
       ]
     };
 
-    $scope.items = ['option1', 'option2'];
+    $scope.showHints = "Hints";
 
-    $scope.selection = $scope.items[0];
-
-    $scope.date = new Date();
+    $scope.selection = $scope.data.items[0].value;
 
     var id;
 
     Invest.getSubscriptions()
       .then(function(response) {
         // body...
-        $scope.subscriptions = response.data;        
+        $scope.subscriptions = response.data;   
       }, 
       function  (error) {
         // body...
         console.log(error);
       });
 
+    Invest.get()
+      .then(function(response) {
+        // body...
+        $scope.investments = response.data; 
+      }, 
+      function  (error) {
+        // body...
+        console.log(error);
+      });
+
+    $scope.back = function () {
+      window.location.href = "/home";
+    }; 
+    
+    $scope.createInvestment = function  () {
+      
+      $window.location.href = "/pay?" + 'Earnings=' + $scope.data.model 
+          + '&Amount=' + $scope.data.singleSelect;
+
+    };
+
     $scope.findOne = function () {
+      
+      $scope.params = $location.search();
 
-      id = $stateParams.id;
+      var keepGoing = true;
 
-      Invest.show(id)
+      Profile.get()
         .then(function(response) {
           // body...
-          $scope.help = response.data;
+          $scope.user = response.data;
+          
         }, 
         function  (error) {
           // body...
           console.log(error);
-        });   
-    }
-    
-    $scope.createInvestment = function  () {
+        });
+          
+      Invest.getSubscriptions()
+        .then(function(response) {
+          // body...
+          $scope.subscriptions = response.data;
+
       
-      // save the comment. pass in comment data from the form
-      // use the function we created in our service
-      // Invest.save($scope.data)
-      //   .then(function (response) {
-      //     // body...
-      //     $location.path('/pay');
-      //   }, function (error) {
-      //     // body...
-      //     console.log(error);
-      //   });
+          angular
+            .forEach($scope.subscriptions, function(value, key) {
+              $scope.subscription = value;
 
-      window.location = "/pay";
+              if ($scope.subscription.membershipFee == $scope.params.Amount) { 
+                  $scope.data = angular.copy($scope.subscription);
+              }
+            });   
 
+        }, 
+        function  (error) {
+          // body...
+          console.log(error);
+        });  
+
+
+      function uuidv4() {
+        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+          var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+          return v.toString(16);
+        });
+      }
+        
+      //Unique transaction reference or order number
+      $scope.reference = uuidv4();
+
+      //The customer's email address.
+      // $scope.email = $scope.user.email;
+
+      //Amount you want to bill the customer
+      $scope.amount = $scope.params.Amount * 100;
+
+      //Metadata is optional
+      $scope.metadata = {
+          custom_fields: [
+              {
+                  display_name: "Mobile Number",
+                  variable_name: "mobile_number",
+                  value: "+2348079273097"
+              }
+          ]
+      };
+
+    };
+    // FindOne ends here
+
+    //Javascript function that is called when the payment is successful
+    $scope.callback = function (response) {
+        
+        $scope.makePayment();
+    };
+
+    //Javascript function that is called if the customer closes the payment window
+    $scope.close = function () {
+        console.log("Payment closed");
+    };
+
+    //Javascript function that is called before payment dialog is opened
+    $scope.beforePopUp = function () {
+        console.log("Now we can perform some task before opening the payment dialog");
+        return true;
+    };
+
+    $scope.makePayment = function () {
+      
+      $scope.amount = 
+      $scope.selection ==  'option1' ? $scope.amount / 100 : $scope.data.membershipFee;
+
+      $scope.modeOfPayment = 
+      $scope.selection == 'option1' ? 'Bank Teller' : 'Online Banking';
+
+      var subscriptionData = {
+        'packageName': $scope.data.name,
+        'packageId': $scope.data.id,
+        'amountPaid': $scope.amount,
+        'earningMethod': $scope.params.Earnings,
+        'investmentPaid': $scope.data.membershipFee,
+        'modeOfPayment': $scope.modeOfPayment
+      };
+
+      Invest.save(subscriptionData)
+        .then(function (response) {
+          // body...
+          $window.location.href = "/home"
+        }, function (error) {
+          // body...
+          console.log(error);
+        });
     };
 
     $scope.deleteHelp = function (id) {
@@ -233,94 +336,29 @@ harricottonApp
     }
   })
   
-  .directive('myDatePicker', function () {
-      return {
-        restrict: 'A',
-        require: '?ngModel',
-        link: function (scope, element, attrs, ngModelController) {
-            
-          //private variables
-          var datepickerFormat  = 'm/d/yyyy',
-              momentFormat = 'M/D/YYYY',
-              datepicker,
-              elPicker;
+  .controller('referralCtrl', function ( $location, $scope, $stateParams, Invest, Profile) {
+    // body...
+    Profile.get()
+      .then(function(response) {
+        // body...
+        $scope.data = response.data;
+      }, 
+      function  (error) {
+        // body...
+        console.log(error);
+      });
 
-          // Init date picker and get object http://bootstrap-datepicker.readthedocs.org/en/release/index.html
-          datepicker = element.datepicker({
-            autoclose: true,
-            keyboardNavigation: flase,
-            todayHighlight: true,
-            format: datepickerFormat
-          });
+    $scope.urlLink = window.location.host + '/register' + '?ref=';
 
-          elPicker = datepicker.data('datepicker').picker;
-
-          //Adjust offset on show
-          datepicker.on('show', function (evt) {
-            elPicker.css('left', parseInt(elPicker.css('left')) + +attrs.offsetX);
-            elPicker.css('top', parseInt(elPicker.css('top')) + +attrs.offsetY);
-          });
-
-          // Only watch and format if ng-model is present https://docs.angularjs.org/api/ng/type/ngModel.NgModelController
-          if (ngModelController) {
-
-            // So we can maintain time
-            var lastModelValueMoment;
-
-            ngModelController.$formatters.push(function (modelValue) {
-                //
-                // Date -> String
-                //
-
-                // Get view value (String) from model value (Date)
-                var viewValue;
-                    m = moment(modelValue);
-
-                if (modelValue && m.isValid()) {
-                  // Valid date obj in model
-                  lastModelValueMoment = m.clone(); // Save date (so we can restore time later)
-                  viewValue = m.format(momentFormat);
-                } else {
-                  // Invalid date obj in model
-                  lastModelValueMoment = undefined;
-                  viewValue = undefined;
-                }
-
-                // Update picker
-                element.datepicker('Update', viewValue);
-
-                // Update picker
-                return viewValue
-            });
-
-             ngModelController.$parsers.push(function (viewValue) {
-                //
-                // Date -> String
-                //
-
-                // Get view value (String) from model value (Date)
-                var modelValue;
-                    m = moment(viewValue, momentFormat, true);
-
-                if (viewValue && m.isValid()) {
-                  // Valid date string in view
-                  lastModelValueMoment = m.clone(); // Save date (so we can restore time later)
-                  viewValue = m.format(momentFormat);
-                } else {
-                  // Invalid date obj in model
-                  lastModelValueMoment = undefined;
-                  viewValue = undefined;
-                }
-
-                // Update picker
-                element.datepicker('Update', viewValue);
-
-                // Update picker
-                return viewValue
-            });
-
-          };
-
-        }
+  })
+  .directive('ngClickCopy', function (ngCopy) {
+    // body...
+    return {
+      restrict: 'A',
+      link: function ($scope, element, attrs) {
+        element.bind('click', function (e) {
+          ngCopy(attrs.ngClickCopy)
+        })
       }
+    }
   });

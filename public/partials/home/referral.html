@@ -1,3 +1,17 @@
-<section>
+<section class="container" ng-controller="referralCtrl">
+
+  <div class="row">
+    <div class="col-lg-8">
+      <label for="basic-url">Your Referral URL Link</label>
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="" value="<%urlLink%><%data.affiliate_id%>">
+        <span class="input-group-btn">
+          <button class="btn btn-secondary" type="button" ng-click-copy="<%urlLink%><%data.affiliate_id%>" data-toggle="tooltip" data-placement="right" title="Copy to clipboard">
+            <i class="far fa-copy"></i>
+          </button>
+        </span>
+      </div>
+    </div>
+  </div>
   
 </section>

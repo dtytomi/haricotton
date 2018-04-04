@@ -25,8 +25,12 @@ Route::get('/admin', 'Admin\AdminController@index');
 
 Route::get('/superadmin', 'Admin\SuperAdminController@index');
 
-Route::post('/pay', 'PaymentController@redirectToGateway')->name('pay'); 
 Route::get('/pay', 'PaymentController@index')->name('pay'); 
+
+Route::get('about', function() {
+  return view('about');
+});
+
 
 
 Route::group(['prefix' => 'api',  'middleware' => 'cors'], function ()

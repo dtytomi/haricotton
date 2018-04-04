@@ -50,7 +50,7 @@
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
           <a class="nav-link" href="tables.html">
             <i class="fa fa-fw fa-table"></i>
-            <span class="nav-link-text">Accounts</span>
+            <span class="nav-link-text">Investors</span>
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
@@ -88,18 +88,10 @@
           </a>
         </li>
          <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
-          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseInvt" data-parent="#exampleAccordion">
-            <i class="fa fa-fw fa-sitemap"></i>
-            <span class="nav-link-text">Investors</span>
+          <a class="nav-link" ui-sref="subscription" ui-sref-active="active">
+            <i class="fa fa-fw fa-file"></i>
+            <span class="nav-link-text">Subscriptions</span>
           </a>
-          <ul class="sidenav-second-level collapse" id="collapseInvt">
-            <li>
-              <a href="#">View Investors</a>
-            </li>
-            <li>
-              <a ui-sref="subscription" ui-sref-active="active">Subscriptions</a>
-            </li>
-          </ul>
         </li>
       </ul>
       <ul class="navbar-nav sidenav-toggler">
@@ -152,6 +144,17 @@
 
     <!-- ANGULAR -->
     <script src="{{ URL::to('vendor/angular/angular.min.js') }}"></script>
+
+    <!-- Angular Material requires Angular.js Libraries -->
+    <script src="{{ URL::to('vendor/angular/angular-animate.min.js') }}"></script>
+    <script src="{{ URL::to('vendor/angular/angular-aria.min.js') }}"></script>
+    <script src="{{ URL::to('vendor/angular/angular-messages.min.js') }}"></script>
+
+    <!-- Angular Material Library -->
+    <script src="{{ URL::to('vendor/material/angular-material.min.js') }}"></script>
+
+    <!-- Angular Paystack Library -->
+    <script src="{{ URL::to('vendor/paystack/angular-paystack.min.js') }}"></script>
 
     <!-- NG Route -->
     <script src="{{ URL::to('vendor/angular/angular-route.min.js') }}"></script>

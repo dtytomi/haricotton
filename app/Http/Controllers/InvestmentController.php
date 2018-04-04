@@ -2,10 +2,12 @@
 
 namespace Haricotton\Http\Controllers;
 
-
+use Auth;
+use Haricotton\User;
 use Haricotton\Investment;
 use Haricotton\Subscription;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 
 class InvestmentController extends Controller
 {
@@ -13,7 +15,7 @@ class InvestmentController extends Controller
     public function index()
     {
       # code...
-      return Investment::all();
+      return Investment::with('subscription')->get();
     }
 
     public function show($id)
@@ -30,13 +32,22 @@ class InvestmentController extends Controller
       // validate our input 
       $this->validate($request, ['amountPaid' => 'required']);
       $this->validate($request, ['earningMethod' => 'required']);
-      $this->validate($request, ['balance' => 'required']);
+      $this->validate($request, ['packageName' => 'required']);
 
-      $investment = Investment::create([
-        'amountPaid' => $request->input('amountPaid'),
-        'earningMethod' => $request->input('earningMethod'),
-        'balance' => $request->input('balance'),
-      ]);
+      $input = $request->all();
+
+      $investment = new Investment();
+      $investment->fill($input);
+
+
+      $user = Auth::user();
+      $subscription = Subscription::findOrFail($input['packageId']);
+
+      $investment->subscription_id =  $subscription->id;
+      
+      $user->investment()->save($investment);
+
+      $investment->save();
 
       return $investment;
     }

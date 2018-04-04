@@ -140,14 +140,6 @@ h4 {
   padding: 100px 0;
 }
 
-#sample1 {
-  background:url(?holder.js/1500x100?theme=sky) no-repeat
-}
-
-#sample2 {
-  background:url(?holder.js/1500x100?theme=industrial) no-repeat
-}
-
 section {
   padding: 100px 0;
 }
@@ -168,4 +160,32 @@ section h3.section-subheading {
   section {
     padding: 150px 0;
   }
+}
+
+.call-to-action {
+  position: relative;
+  background-color: #343a40;
+  background: url("../img/call.jpg") no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  padding-top: 7rem;
+  padding-bottom: 7rem; 
+}
+
+.call-to-action .overlay {
+  position: absolute;
+  background-color: #212529;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0.3; 
+}
+
+footer.footer {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+
 }

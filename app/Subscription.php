@@ -13,9 +13,9 @@ class Subscription extends Model
       'referralEarnings',
     ];
 
-    public function investments()
+    public function investment()
     {
-      # code...
-      return $this->hasMany(Investment::class);
+        return $this->hasOne('Haricotton\Investment');
     }
+
 }

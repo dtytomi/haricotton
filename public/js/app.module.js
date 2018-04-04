@@ -1,6 +1,5 @@
 var harricottonApp = 
-  angular
-    .module('harricottonApp', ['ngRoute', 'ui.router'],
+  angular.module('harricottonApp', ['ngRoute', 'ui.router', 'ngMaterial', 'paystack'],
       function ($interpolateProvider) {
         $interpolateProvider.startSymbol('<%');
         $interpolateProvider.endSymbol('%>');
@@ -13,8 +12,12 @@ harricottonApp
   });
 
 harricottonApp
-  .config(function ($locationProvider, $stateProvider) {
+  .config(function ($locationProvider, $stateProvider, $paystackProvider) {
     // body...
+    $paystackProvider.configure({
+        key: 'pk_test_b82b8dd9186f165444835135f25a77d2a2fd1fe5'
+    });
+    
     $stateProvider
       .state({
         name: 'balance',
@@ -31,7 +34,7 @@ harricottonApp
       .state ({
         name: 'referalls',
         url: '/home/referalls',
-        template: '<h3>hello referral!</h3>'
+        templateUrl: './partials/home/referral.html'
       })
 
       .state ({
@@ -67,7 +70,7 @@ harricottonApp
       .state ({
         name: 'dashboard',
         url: '/superadmin',
-        templateUrl: '/partials/superadmin/create.user.html'
+        template: '<h1>Coming Soon</h1>'
       })
 
       .state ({

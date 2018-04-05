@@ -1,4 +1,16 @@
 harricottonApp
+  .directive('ngClickCopy', function (ngCopy) {
+    // body...
+    return {
+      restrict: 'A',
+      link: function ($scope, element, attrs) {
+        element.bind('click', function (e) {
+          ngCopy(attrs.ngClickCopy)
+        })
+      }
+    }
+  })
+
   .controller('profileCtrl', function userCtrl($scope, $http, $stateParams, Profile, $location) {
     // body...
 
@@ -165,7 +177,8 @@ harricottonApp
       items: [
         { name: 'Bank Teller', value: 'option1'},
         { name: 'Bank Transfer', value: 'option2'}
-      ]
+      ],
+      makeInvestment: false
     };
 
     $scope.showHints = "Hints";
@@ -188,6 +201,10 @@ harricottonApp
       .then(function(response) {
         // body...
         $scope.investments = response.data; 
+
+        if ($scope.investments.length != 0) {
+          $scope.data.makeInvestment = true;
+        };
       }, 
       function  (error) {
         // body...
@@ -207,6 +224,8 @@ harricottonApp
 
     $scope.findOne = function () {
       
+       console.log($scope.selection);
+
       $scope.params = $location.search();
 
       var keepGoing = true;
@@ -292,9 +311,11 @@ harricottonApp
     };
 
     $scope.makePayment = function () {
+
+      console.log($scope.selection);
       
       $scope.amount = 
-      $scope.selection ==  'option1' ? $scope.amount / 100 : $scope.data.membershipFee;
+      $scope.selection ==  'option1' ? $scope.amountPaid : $scope.data.membershipFee;
 
       $scope.modeOfPayment = 
       $scope.selection == 'option1' ? 'Bank Teller' : 'Online Banking';
@@ -318,22 +339,6 @@ harricottonApp
         });
     };
 
-    $scope.deleteHelp = function (id) {
-
-      Invest.delete(id)
-        .then(function(response) {
-          // body...
-          Invest.get()
-            .then(function (response) {
-              // body...
-              $scope.helps = response.data;
-            });
-        }, 
-        function  (error) {
-          // body...
-          console.log(error);
-        });
-    }
   })
   
   .controller('referralCtrl', function ( $location, $scope, $stateParams, Invest, Profile) {
@@ -350,15 +355,4 @@ harricottonApp
 
     $scope.urlLink = window.location.host + '/register' + '?ref=';
 
-  })
-  .directive('ngClickCopy', function (ngCopy) {
-    // body...
-    return {
-      restrict: 'A',
-      link: function ($scope, element, attrs) {
-        element.bind('click', function (e) {
-          ngCopy(attrs.ngClickCopy)
-        })
-      }
-    }
   });

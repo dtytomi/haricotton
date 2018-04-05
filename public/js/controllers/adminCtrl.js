@@ -23,7 +23,7 @@ harricottonApp
   });
 
 harricottonApp
-  .controller('UserManagementCtrl', function UserManagementCtrl ($scope, $http, Roles, UsersManagement, $location) {
+  .controller('UserManagementCtrl', function UserManagementCtrl ($scope, Roles, UsersManagement, $location) {
     // body...
     $scope.roles = {};
     $scope.users = {};
@@ -108,7 +108,7 @@ harricottonApp
       }
 
   })
-  .controller('SubscriptionCtrl', function SubscriptionCtrl ($scope, $http, Roles, SubscriptionManagement, $location, $stateParams) {
+  .controller('SubscriptionCtrl', function SubscriptionCtrl ($scope, SubscriptionManagement, $location, $stateParams) {
     // body...
     $scope.subscriptions = {};
     
@@ -200,5 +200,54 @@ harricottonApp
             console.log(error);
           });
       }
+
+  })
+
+  .controller('InvestmentManagementCtrl', function ($scope, InvestmentManagement, $location, $stateParams) {
+
+    $scope.users = { };
+
+    InvestmentManagement.get()
+      .then(function(response) {
+        // body...
+        $scope.users = response.data;
+      }, 
+      function  (error) {
+        // body...
+        console.log(error);
+      });
+
+    $scope.findOne = function () {
+      
+      var id = $stateParams.id;
+
+      InvestmentManagement.show(id)
+        .then(function(response) {
+          // body...
+          $scope.user = response.data;
+          console.log($scope.user);
+        }, 
+        function  (error) {
+          // body...
+          console.log(error);
+        });
+    } 
+
+    $scope.deleteInvestment = function (id) {
+
+      InvestmentManagement.delete(id)
+        .then(function(response) {
+          // body...
+          InvestmentManagement.get()
+            .then(function (response) {
+              // body...
+              $scope.users = response.data;
+            });
+        }, 
+        function  (error) {
+          // body...
+          console.log(error);
+        });
+    }
 
   });

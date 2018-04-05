@@ -15,7 +15,9 @@ class InvestmentController extends Controller
     public function index()
     {
       # code...
-      return Investment::with('subscription')->get();
+      $userId = Auth::user()->id;
+
+      return Investment::where('user_id', $userId)->with('subscription')->get();
     }
 
     public function show($id)

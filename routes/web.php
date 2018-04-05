@@ -61,5 +61,8 @@ Route::group(['prefix' => 'api',  'middleware' => 'cors'], function ()
   Route::resource('subscriptions', 'Admin\SubscriptionController',
     array('only' => array('index', 'show', 'store', 'update', 'destroy'))); 
 
+  Route::resource('investmentbalance', 'Admin\AdminInvestmentController',
+    array('only' => array('index', 'show', 'update', 'destroy'))); 
+
 });
 

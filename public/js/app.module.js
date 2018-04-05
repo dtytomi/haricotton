@@ -70,7 +70,7 @@ harricottonApp
       .state ({
         name: 'dashboard',
         url: '/superadmin',
-        template: '<h1>Coming Soon</h1>'
+        templateUrl: '/partials/superadmin/investors.html'
       })
 
       .state ({
@@ -95,6 +95,12 @@ harricottonApp
         name: 'editSubscription',
         url: '/superadmin/subscription/{id}',
         templateUrl: '/partials/superadmin/edit.subscription.html'
+      })
+
+      .state ({
+        name: 'editUserInvestment',
+        url: '/superadmin/investors/{id}',
+        templateUrl: '/partials/superadmin/edit.investment.html'
       });
 
     $locationProvider.hashPrefix('');

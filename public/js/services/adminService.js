@@ -89,4 +89,20 @@ harricottonApp
           return $http.delete( constants.API_URL + 'subscriptions/' + id);
       }
     }
+  })
+  
+  .factory('InvestmentManagement', function ($http, constants) {
+    return {
+
+      get: function() {
+        
+        return $http.get(constants.API_URL + 'investmentbalance/');
+      },
+
+      show: function(id) {
+        
+        return $http.get(constants.API_URL + 'investmentbalance/' + id);
+      }
+
+    }
   });

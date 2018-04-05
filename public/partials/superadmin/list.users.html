@@ -1,0 +1,33 @@
+<section ng-controller="UserManagementCtrl">
+  <div >
+    <h3>Users <a class="btn btn-primary btn-sm" ui-sref="createUser" ui-sref-active="active" role="button"><i class="fas fa-user-plus"></i> Create New</a></h3>
+  </div>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Roles</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="user in users">
+        <td><%user.name%></td>
+        <td><%user.email%></td>
+        <td>
+          <h4 ng-repeat="role in user.roles">
+            <span class="badge badge-success">
+              <%role.display_name%>
+            </span>
+          </h4>
+        </td>
+        <td>
+          <a ui-sref="editUser({id: help.id})" class="btn btn-primary btn-sm"><i class="far fa-edit"></i></a>
+      
+          <a href="" ng-click="deleteUser(user.id)" class="btn btn-danger btn-sm"><i class="far fa-trash-alt"></i></a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</section>

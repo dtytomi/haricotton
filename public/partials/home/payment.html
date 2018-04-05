@@ -1,0 +1,49 @@
+<section  class="container" ng-controller="investCtrl">
+
+  <div class="card w-75">
+    <div class="card-header">
+     <i class="far fa-file-alt"></i> Investment Form
+    </div>
+    <div class="card-body">
+      <form role="form" ng-submit="createInvestment()" novalidate> 
+
+        <div class="form-group row">
+          <label for="packageName" class="col-sm-3 col-form-label">Package Name:</label>
+          <div class="col-xs-6 col-sm-6 col-md-7">
+            <select name="packageName" id="packageName" class="form-control" ng-model="data.singleSelect">
+              <option value="">---Please select---</option>
+              <option ng-repeat="subscription in subscriptions" value="<%subscription.membershipFee%>"><%subscription.name%></option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="message" class="col-sm-3 col-form-label">Amount ₦:</label>
+          <div class="col-xs-6 col-sm-6 col-md-7">
+            <input class="form-control" type="text" ng-value="data.singleSelect" placeholder="Readonly input here…" readonly>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="message" class="col-sm-3 col-form-label">Earning Period:</label>
+          <div class="col-xs-6 col-sm-6 col-md-7">
+            <select name="packageName" id="packageName" class="form-control" ng-model="data.model">
+              <option value="">---Please select---</option>
+              <option ng-repeat="option in data.availableOptions" value="<%option.value%>"><%option.name%></option>
+            </select>
+          </div>
+        </div>
+
+       <!--  <div class="form-group row">
+          <label for="message" class="col-sm-3 col-form-label">Earning Rate:</label>
+          <div class="col-xs-6 col-sm-6 col-md-7">
+            <input class="form-control" type="text" ng-value="subscription.data.model" placeholder="Readonly input here…" readonly>
+          </div>
+        </div> -->
+            
+        <input type="submit" value="Send" class="btn btn-success text-center">
+      </form>
+    </div>
+  </div>
+
+</section>

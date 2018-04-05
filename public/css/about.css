@@ -1,0 +1,44 @@
+section {
+  padding: 20px 0;
+  display: table;
+  width: 100%;
+  height: auto;
+}
+
+@media (min-width: 768px) {
+  section {
+    padding: 2% 0;
+    height: 100%;
+  }
+}
+
+.intro {
+  position: relative;
+  display: table;
+  width: 100%;
+  height: auto;
+  padding-top: 8rem;
+  padding-bottom: 8rem; 
+  background: url(../img/images.jpeg) no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+@media (min-width: 768px) {
+
+  .intro {
+    height: 100%;
+  }
+
+  section {
+    padding: 2% 0;
+    height: 100%;
+  }
+}
+
+.card-body {
+  
+  padding: 1rem 0 !important;
+}

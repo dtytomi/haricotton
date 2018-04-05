@@ -1,0 +1,110 @@
+<section ng-controller="SubscriptionCtrl">
+  
+  <!-- Breadcrumbs-->
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a href="#">Dashboard</a>
+    </li>
+    <li class="breadcrumb-item active">Subscription</li>
+  </ol>
+
+  <div class="card w-75">
+    <div class="card-body">
+      <form role="form" ng-submit="createSubscription()" novalidate> 
+        <div class="form-group row">
+          <label for="name" class="col-sm-3 col-form-label">Package Name:</label>
+          <div class="col-xs-6 col-sm-6 col-md-9">
+            <input type="text" name="name" id="name" class="form-control input-sm" placeholder="Package Name" ng-model="subscriptionData.name">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="membershipFee" class="col-sm-3 col-form-label">Membership Fee (₦):</label>
+          <div class="col-xs-6 col-sm-6 col-md-9">
+            <input type="number" lang="en-150" name="membershipFee" id="membershipFee" class="form-control input-sm" placeholder="Membership Fee" ng-model="subscriptionData.membershipFee">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="dailyEarnings" class="col-sm-3 col-form-label">Daily Earnings (₦):</label>
+          <div class="col-xs-6 col-sm-6 col-md-9">
+            <input type="number" lang="en-150" name="dailyEarnings" id="dailyEarnings" class="form-control input-sm" placeholder="Daily Earnings" ng-model="subscriptionData.dailyEarnings">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="weeklyEarnings" class="col-sm-3 col-form-label">Weekly Earnings (₦):</label>
+          <div class="col-xs-6 col-sm-6 col-md-9">
+            <input type="number" lang="en-150" name="weeklyEarnings" id="weeklyEarnings" class="form-control input-sm" placeholder="Weekly Earnings" ng-model="subscriptionData.weeklyEarnings">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="monthlyEarnings" class="col-sm-3 col-form-label">Monthly Earnings (₦):</label>
+          <div class="col-xs-6 col-sm-6 col-md-9">
+            <input type="number" lang="en-150" name="monthlyEarnings" id="monthlyEarnings" class="form-control input-sm" placeholder="Monthly Earnings" ng-model="subscriptionData.monthlyEarnings">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="annualEarnings" class="col-sm-3 col-form-label">Annual Earnings (₦):</label>
+          <div class="col-xs-6 col-sm-6 col-md-9">
+            <input type="number" lang="en-150" name="annualEarnings" id="annualEarnings" class="form-control input-sm" placeholder="Annual Earnings" ng-model="subscriptionData.annualEarnings">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="referralEarnings" class="col-sm-3 col-form-label">Referral Earnings (₦):</label>
+          <div class="col-xs-6 col-sm-6 col-md-9">
+            <input type="number" lang="en-150" name="referralEarnings" id="referralEarnings" class="form-control input-sm" placeholder="Referral Earnings" ng-model="subscriptionData.referralEarnings">
+          </div>
+        </div>
+        <div class="col-md-3 offset-md-8">
+          <input type="submit" value="Submit" class="btn btn-info">
+        </div>   
+      </form>
+    </div>
+  </div>
+
+  <br />  
+
+  <div class="card">
+    <div class="card-header">
+      Subscription
+    </div>
+    <div class="card-body">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">Packages</th>
+            <th scope="col">Membership ₦:</th>
+            <th scope="col">Daily ₦:</th>
+            <th scope="col">Weekly ₦:</th>
+            <th scope="col">Monthly ₦:</th>
+            <th scope="col">Annual ₦:</th>
+            <th scope="col">Referral ₦:</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr ng-repeat="subscription in subscriptions">
+            <td><%subscription.name%></td>
+            <td><%subscription.membershipFee%></td>
+            <td><%subscription.dailyEarnings%></td>
+            <td><%subscription.weeklyEarnings%></td>
+            <td><%subscription.monthlyEarnings%></td>
+            <td><%subscription.annualEarnings%></td>
+            <td><%subscription.referralEarnings%></td>
+            <td>
+              <a ui-sref="editSubscription({id: subscription.id})" class="btn btn-success btn-sm"><i class="far fa-edit"></i></a>
+          
+              <a href="" ng-click="deleteSubscription(subscription.id)" class="btn btn-danger btn-sm"><i class="far fa-trash-alt"></i></a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</section>

@@ -1,0 +1,59 @@
+<section ng-controller="InvestmentManagementCtrl" data-ng-init="findOne()">
+  <!-- Breadcrumbs-->
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a ui-sref="dashboard">Investment</a>
+    </li>
+    <li class="breadcrumb-item active">Edit Investment</li>
+  </ol>
+
+  <div class="card w-75">
+    <div class="card-body">
+      <form role="form" ng-submit="submitProfile()" novalidate> 
+
+        <div class="form-group row">
+          <label for="name" class="col-sm-3 col-form-label">Name</label>
+          <div class="col-xs-6 col-sm-6 col-md-7">
+            <input type="text" name="name" value="<%user.name%>" id="name" class="form-control input-sm" placeholder="Name" readonly>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="amountPaid" class="col-sm-3 col-form-label">Amount Paid</label>
+          <div class="col-xs-6 col-sm-6 col-md-7">
+            <input type="number" name="amountPaid" id="amountPaid" value="<%user.investment.amountPaid%>" class="form-control input-sm" placeholder="Amount Paid" readonly>
+          </div>
+        </div>
+        
+        <div class="form-group row">
+          <label for="investment" class="col-sm-3 col-form-label">Investment</label>
+          <div class="col-xs-6 col-sm-6 col-md-7">
+            <input type="number" name="investment" id="investment" value="<%user.investment.investmentPaid%>" class="form-control input-sm" placeholder="Investment" readonly>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="modeOfPayment" class="col-sm-3 col-form-label">Mode Of Payment</label>
+          <div class="col-xs-6 col-sm-6 col-md-7">
+            <input type="text" name="modeOfPayment" id="modeOfPayment" value="<%user.investment.modeOfPayment%>" class="form-control input-sm" placeholder="Mode Of Payment" readonly>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="status" class="col-sm-3 col-form-label">Status</label>
+          <div class="col-xs-6 col-sm-6 col-md-7">
+            <select name="status" class="form-control" id="status" ng-model="investment.status">
+              <option value="">---Please select---</option> <!-- not selected / blank option -->
+              <option value="{{user.investment.status}}">Pending</option> <!-- interpolation -->
+              <option value="Confirmed">Confirmed</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="col-md-3 offset-md-8">
+          <input type="submit" value="Submit" class="btn btn-info">
+        </div>
+      </form>
+    </div>
+  </div>
+</section>

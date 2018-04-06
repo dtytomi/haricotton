@@ -180,7 +180,9 @@ harricottonApp
             }, function (error) {
               // body...
               console.log(error);
-            })
+            });
+
+          $scope.subscriptionData = { };
       };
 
       $scope.deleteSubscription = function (id) {
@@ -226,6 +228,25 @@ harricottonApp
           // body...
           $scope.user = response.data;
           console.log($scope.user);
+        }, 
+        function  (error) {
+          // body...
+          console.log(error);
+        });
+    } 
+
+    $scope.updateInvestment = function () {
+      
+      id = $stateParams.id;
+
+      InvestmentManagement.update()
+        .then(function(response) {
+          // body...
+          InvestmentManagement.get()
+            .then(function (response) {
+              // body...
+              $scope.users = response.data;
+            });          
         }, 
         function  (error) {
           // body...

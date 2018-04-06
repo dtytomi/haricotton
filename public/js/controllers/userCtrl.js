@@ -68,7 +68,6 @@ harricottonApp
     // SAVE A User Profile ================
     $scope.submitProfile = function  () {
       
-      id = $stateParams.id;
       // save the comment. pass in comment data from the form
       // use the function we created in our service
       Profile.save($scope.profileData, id)
@@ -177,8 +176,7 @@ harricottonApp
       items: [
         { name: 'Bank Teller', value: 'option1'},
         { name: 'Bank Transfer', value: 'option2'}
-      ],
-      makeInvestment: false
+      ]
     };
 
     $scope.showHints = "Hints";
@@ -201,10 +199,6 @@ harricottonApp
       .then(function(response) {
         // body...
         $scope.investments = response.data; 
-
-        if ($scope.investments.length != 0) {
-          $scope.data.makeInvestment = true;
-        };
       }, 
       function  (error) {
         // body...

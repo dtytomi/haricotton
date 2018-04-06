@@ -4,6 +4,7 @@ namespace Haricotton\Http\Controllers\Admin;
 
 use Log;
 use Haricotton\User;
+use Haricotton\Investment;
 use Illuminate\Http\Request;
 use Haricotton\Http\Controllers\Controller;
 
@@ -41,10 +42,12 @@ class AdminInvestmentController extends Controller
     */
     public function show($id)
     {
-      Log::info('I am user' . $id);
-      $user = User::findOrFail($id)->with('investment')->get();
       
-      return $user;
+      $userId = User::findOrFail($id)->id;
+    
+      $investment = Investment::where('user_id', $userId)->with('user')->get();
+
+      return $investment;
     }
 
 }

@@ -161,18 +161,7 @@
                           </md-input-container>
                         </div>
                       </div>
-                      <div class="form-group col">
-                        <md-input-container class="md-block" flex-gt-sm>
-                          <label>Bank Teller No:</label>
-                          <input name="btnNumber" ng-model="user.btnNumber" ng-pattern="/^[0-9]{3}-[0-9]{2}-[0-9]{4}$/" />
-
-                          <div class="hint" ng-if="showHints">###-##-####</div>
-
-                          <div ng-messages="btnForm.btnNumber.$error" ng-if="!showHints">
-                            <div ng-message="pattern">###-##-#### - Please enter a valid BTN.</div>
-                          </div>
-                        </md-input-container>
-                      </div>
+                      
                       
                       <small>
                         <a href="" class="text-muted" ng-click="back()"><i class="fas fa-long-arrow-alt-left"></i> Back</a>

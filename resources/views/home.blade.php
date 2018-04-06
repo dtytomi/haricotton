@@ -70,12 +70,6 @@
             </a>
           </li>
           <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
-            <a class="nav-link" ui-sref="payout" ui-sref-active="active">
-              <i class="fas fa-fw fa-money-bill-alt"></i>
-              <span class="nav-link-text">Payout</span>
-            </a>
-          </li>
-          <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
             <a class="nav-link" ui-sref="help" ui-sref-active="active">
               <i class="fas fa-fw fa-handshake"></i>
               <span class="nav-link-text">Need Help</span>

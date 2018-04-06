@@ -100,7 +100,7 @@ harricottonApp
       .state ({
         name: 'editUserInvestment',
         url: '/superadmin/investors/{id}',
-        templateUrl: '/partials/superadmin/edit.investment.html'
+        templateUrl: '/partials/superadmin/edit.user.investment.html'
       });
 
     $locationProvider.hashPrefix('');

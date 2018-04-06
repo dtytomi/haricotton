@@ -102,6 +102,16 @@ harricottonApp
       show: function(id) {
         
         return $http.get(constants.API_URL + 'investmentbalance/' + id);
+      },
+
+      update: function(investmentData, id) {
+        
+        return $http({
+          method: 'PATCH',
+          url: constants.API_URL + 'investmentbalance/' + id,
+          headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+          data: $.param(investmentData)
+        });
       }
 
     }

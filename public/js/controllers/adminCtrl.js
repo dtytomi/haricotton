@@ -239,7 +239,7 @@ harricottonApp
       
       id = $stateParams.id;
 
-      InvestmentManagement.update()
+      InvestmentManagement.update($scope.investmentData, id)
         .then(function(response) {
           // body...
           InvestmentManagement.get()

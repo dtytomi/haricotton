@@ -106,16 +106,6 @@ harricottonApp
           headers: {'Content-Type': 'application/x-www-form-urlencoded'},
           data: $.param(investData)
         });
-      },
-
-      pay: function(paymentData) {
-        // body...
-        return $http({
-          method: 'POST',
-          url: constants.API_URL + 'pay',
-          headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-          data: $.param(paymentData)
-        });
       }
 
     }

@@ -9,40 +9,40 @@
 
   <div class="card w-75">
     <div class="card-body" ng-repeat="user in user">
-      <form role="form" ng-submit="submitProfile()" novalidate> 
+      <form role="form" ng-submit="updateInvestment()" novalidate> 
 
         <div class="form-group row">
           <label for="name" class="col-sm-3 col-form-label">Name</label>
           <div class="col-xs-6 col-sm-6 col-md-7">
-            <input type="text" name="name" value="<%user.user.name%>" id="name" class="form-control input-sm" placeholder="Name" readonly>
+            <input type="text" name="name" value="<%user.user.name%>" id="name" class="form-control input-sm" placeholder="Name" ng-model="user.name" readonly>
           </div>
         </div>
 
         <div class="form-group row">
           <label for="amountPaid" class="col-sm-3 col-form-label">Amount Paid</label>
           <div class="col-xs-6 col-sm-6 col-md-7">
-            <input type="number" name="amountPaid" id="amountPaid" value="<%user.amountPaid%>" class="form-control input-sm" placeholder="Amount Paid" readonly>
+            <input type="number" name="amountPaid" id="amountPaid" value="<%user.amountPaid%>" class="form-control input-sm" placeholder="Amount Paid" ng-model="user.amountPaid" readonly>
           </div>
         </div>
         
         <div class="form-group row">
           <label for="investmentPaid" class="col-sm-3 col-form-label">Investment</label>
           <div class="col-xs-6 col-sm-6 col-md-7">
-            <input type="number" name="investmentPaid" id="investmentPaid" value="<%user.investmentPaid%>" class="form-control input-sm" placeholder="Investment" readonly>
+            <input type="number" name="investmentPaid" id="investmentPaid" value="<%user.investmentPaid%>" class="form-control input-sm" placeholder="Investment" ng-model="user.investmentPaid" readonly>
           </div>
         </div>
 
         <div class="form-group row">
           <label for="modeOfPayment" class="col-sm-3 col-form-label">Mode Of Payment</label>
           <div class="col-xs-6 col-sm-6 col-md-7">
-            <input type="text" name="modeOfPayment" id="modeOfPayment" value="<%user.modeOfPayment%>" class="form-control input-sm" placeholder="Mode Of Payment" readonly>
+            <input type="text" name="modeOfPayment" id="modeOfPayment" value="<%user.modeOfPayment%>" class="form-control input-sm" placeholder="Mode Of Payment" ng-model="user.modeOfPayment" readonly>
           </div>
         </div>
 
         <div class="form-group row">
           <label for="status" class="col-sm-3 col-form-label">Status</label>
           <div class="col-xs-6 col-sm-6 col-md-7">
-            <select name="status" class="form-control" id="status" ng-model="investment.status">
+            <select name="status" class="form-control" id="status" ng-model="user.status">
               <option value="">---Please select---</option> <!-- not selected / blank option -->
               <option value="<%user.status%>"><%user.status%></option> <!-- interpolation -->
               <option value="Confirmed">Confirmed</option>

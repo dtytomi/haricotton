@@ -50,4 +50,27 @@ class AdminInvestmentController extends Controller
       return $investment;
     }
 
+    /**
+    * Update the specified resource in storage.
+    *
+    * @param  \Illuminate\Http\Request  $request
+    * @param  int  $id
+    * @return \Illuminate\Http\Response
+    */
+    public function update(Request $request, $id)
+    {
+      $this->validate($request, [
+        'name' => 'required',
+        'amountPaid' => 'required',
+        'earningMethod' => 'required'
+      ]);
+
+      $input = $request->all();
+
+      $investment = Investment::findOrFail($id);
+      $investment->update($input);
+
+      return $investment; 
+    } 
+
 }

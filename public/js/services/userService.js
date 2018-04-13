@@ -25,28 +25,30 @@ harricottonApp
       textarea.remove();
 
     }
-  })
-  .factory('Profile', function ($http, constants) {
+  });
+
+harricottonApp
+  .factory('Profile', function ($http, Origin) {
     // body...
     return {
 
       // get user's attribute
       get: function() {
         // body...
-        return $http.get(constants.API_URL + 'profile/');
+        return $http.get(Origin.crossOrigin() + '/api/profile/');
       },
 
       // get user's attribute
       show: function(id) {
         // body...
-        return $http.get(constants.API_URL + 'profile/' + id);
+        return $http.get(Origin.crossOrigin() + '/api/profile/' + id);
       },
 
       save: function(profileData, id) {
         // body...
         return $http({
           method: 'PATCH',
-          url: constants.API_URL + 'profile/' + id,
+          url: Origin.crossOrigin() + '/api/profile/' + id,
           headers: {'Content-Type': 'application/x-www-form-urlencoded'},
           data: $.param(profileData)
         });
@@ -55,18 +57,18 @@ harricottonApp
     }
   })
 
-  .factory('Help', function ($http, constants) {
+  .factory('Help', function ($http, Origin) {
     return {
       get: function() {
         // body...
-        return $http.get(constants.API_URL + 'helps/');
+        return $http.get(Origin.crossOrigin() + '/api/helps/');
       },
 
       save: function(helpData) {
         // body...
         return $http({
           method: 'POST',
-          url: constants.API_URL + 'helps/',
+          url: Origin.crossOrigin() + '/api/helps',
           headers: {'Content-Type': 'application/x-www-form-urlencoded'},
           data: $.param(helpData)
         });
@@ -74,39 +76,72 @@ harricottonApp
 
       show: function(id) {
         // body...
-        return $http.get(constants.API_URL + 'helps/' + id);
+        return $http.get(Origin.crossOrigin() + '/api/helps/' + id);
       },
 
       // destroy a comment
       delete : function(id) {
-          return $http.delete( constants.API_URL + 'helps/' + id);
+          return $http.delete( Origin.crossOrigin() + '/api/helps/' + id);
       }
 
     }
   })
 
-  .factory('Invest', function ($http, constants) {
+  .factory('Invest', function ($http, Origin) {
     return {
 
       getSubscriptions: function() {
         // body...
-        return $http.get(constants.API_URL + 'subscriptions/');
+        return $http.get(Origin.crossOrigin() + '/api/subscriptions/');
       },
 
       get: function() {
         // body...
-        return $http.get(constants.API_URL + 'investments/');
+        return $http.get(Origin.crossOrigin() + '/api/investments/');
       },
 
       save: function(investData) {
         // body...
         return $http({
           method: 'POST',
-          url: constants.API_URL + 'investments',
+          url: Origin.crossOrigin() + '/api/investments',
           headers: {'Content-Type': 'application/x-www-form-urlencoded'},
           data: $.param(investData)
         });
       }
 
     }
+  })
+
+  .factory('Referrals', function ($http, Origin) {
+    return {
+      get: function() {
+        // body...
+        return $http.get(Origin.crossOrigin() + '/api/referrals/');
+      } 
+    }
+  });
+
+harricottonApp
+  .filter('earningRate', function() {
+    return function(input, subscriptions, selected) {
+      
+        var data;
+         angular
+          .forEach(subscriptions, function(key, value) {
+            var subscription = key;
+            
+            if (subscription.membershipFee == selected) { 
+                if (subscription.hasOwnProperty(input)) {
+                   data = angular.copy(subscription[input]);
+                } else 
+                  if (input == 'wtf') {
+                    
+                     data = angular.copy(subscription); 
+                }
+            }
+          }); 
+
+      return data;
+    };
   });

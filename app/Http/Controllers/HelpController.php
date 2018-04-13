@@ -3,7 +3,7 @@
 namespace Haricotton\Http\Controllers;
 
 use Auth;
-
+use Log;
 use Haricotton\Help; 
 use Haricotton\User;
 use Illuminate\Http\Request;
@@ -11,17 +11,7 @@ use Illuminate\Http\Response;
 
 class HelpController extends Controller
 {
-   /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
-    
+    // 
     public function index()
     {
       # code...
@@ -29,7 +19,7 @@ class HelpController extends Controller
 
       $helps = User::findOrFail($userId)->helps;
 
-      return Help::all();
+      return $helps;
     }
 
     /**
@@ -43,22 +33,19 @@ class HelpController extends Controller
       # code...
       $userId = Auth::user()->id;
 
-      $user = User::with('helps')->findOrFail($userId);
+      $user = User::findOrFail($userId);
 
       $this->validate($request, [
         'subject' => 'required',
         'message' => 'required',
       ]);
-
       
-      $help = new Help();
-      $help->fill($request->all());
-      $user->helps()->save($help);
+      $user->helps()->save(new Help([
+        'subject' => $request->input('subject'),
+        'message' => $request->input('message'),
+      ]));
 
-      $user->save();
-
-      return $help;
-
+      return $user->helps;
     }
 
     public function show($id)

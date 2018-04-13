@@ -25,19 +25,17 @@ Route::get('/admin', 'Admin\AdminController@index');
 
 Route::get('/superadmin', 'Admin\SuperAdminController@index');
 
-Route::get('/pay', 'PaymentController@index')->name('pay'); 
-
 Route::get('about', function() {
   return view('about');
 });
 
 
 
-Route::group(['prefix' => 'api',  'middleware' => 'cors'], function ()
+Route::group(['middleware' => ['cors', 'auth'], 'prefix' => 'api'], function ()
 {
   # code...
   Route::resource('helps', 'HelpController',
-    array('only' => array('index','store', 'show', 'destroy' )));
+    array('only' => array('index','store', 'show', 'destroy')));
 
   Route::resource('notifications', 'NotificationController',
     array('only' => array('index','store', 'show')));  
@@ -53,7 +51,10 @@ Route::group(['prefix' => 'api',  'middleware' => 'cors'], function ()
     array('only' => array('index', 'show', 'update'))); 
 
   Route::resource('roles', 'RoleController',
-    array('only' => array('index', 'show', 'update')));  
+    array('only' => array('index', 'show', 'update'))); 
+
+  Route::resource('referrals', 'ReferralController',
+    array('only' => array('index')));  
 
   Route::resource('users', 'Admin\UserManagementController',
     array('only' => array('index', 'show', 'store', 'update', 'destroy')));
@@ -61,7 +62,13 @@ Route::group(['prefix' => 'api',  'middleware' => 'cors'], function ()
   Route::resource('subscriptions', 'Admin\SubscriptionController',
     array('only' => array('index', 'show', 'store', 'update', 'destroy'))); 
 
-  Route::resource('investmentbalance', 'Admin\AdminInvestmentController',
+  Route::resource('investors', 'Admin\AdminInvestmentController',
+    array('only' => array('index', 'show', 'update', 'destroy'))); 
+
+  Route::resource('orders', 'Admin\AdminOrder',
+    array('only' => array('index', 'show', 'update', 'destroy'))); 
+
+  Route::resource('payouts', 'Admin\AdminPayout',
     array('only' => array('index', 'show', 'update', 'destroy'))); 
 
 });

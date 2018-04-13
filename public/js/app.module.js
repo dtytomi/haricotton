@@ -5,10 +5,18 @@ var harricottonApp =
         $interpolateProvider.endSymbol('%>');
       });
 
-// define our canstant for the API
 harricottonApp
-  .constant('constants', {
-    API_URL: 'http://localhost:8000/api/'
+  .service('Origin', function() {
+    this.crossOrigin = function () {
+
+      if (!window.location.origin) {
+        window.location.origin = 
+          window.location.protocol + "//" 
+           + window.location.hostname + (window.location.port ? ':' + window.location.port: '');
+      }
+
+      return window.location.origin;
+    }
   });
 
 harricottonApp
@@ -22,19 +30,19 @@ harricottonApp
       .state({
         name: 'balance',
         url: '/home',
-        templateUrl: './partials/home/balance.html'
+        templateUrl: '/partials/home/balance.html'
       })
 
       .state({
         name: 'payment',
         url: '/home/payment',
-        templateUrl: './partials/home/payment.html'
+        templateUrl: '/partials/home/payment.html'
       })
 
       .state ({
         name: 'referalls',
         url: '/home/referalls',
-        templateUrl: './partials/home/referral.html'
+        templateUrl: '/partials/home/referral.html'
       })
 
       .state ({
@@ -44,15 +52,9 @@ harricottonApp
       })
 
       .state ({
-        name: 'payout',
-        url: '/home/payout',
-        template: '<h3>hello payout!</h3>'
-      })
-
-      .state ({
         name: 'editProfile',
         url: '/home/{id}/editProfile',
-        templateUrl: '/partials/home/edit.html'
+        templateUrl: '../partials/home/edit.profile.html'
       })
 
       .state ({
@@ -64,7 +66,7 @@ harricottonApp
       .state ({
         name: 'showHelp',
         url: '/home/help/{id}',
-        templateUrl: '/partials/home/show.help.html'
+        templateUrl: '../partials/home/show.help.html'
       })
 
       .state ({
@@ -101,6 +103,24 @@ harricottonApp
         name: 'editUserInvestment',
         url: '/superadmin/investors/{id}',
         templateUrl: '/partials/superadmin/edit.user.investment.html'
+      })
+
+      .state ({
+        name: 'orders',
+        url: '/superadmin/orders',
+        templateUrl: '/partials/superadmin/orders.html'
+      })
+
+      .state ({
+        name: 'payout',
+        url: '/superadmin/payout',
+        templateUrl: '/partials/superadmin/payout.html'
+      })
+
+      .state ({
+        name: 'editOrder',
+        url: '/superadmin/order/{id}',
+        templateUrl: '/partials/superadmin/edit.order.html'
       });
 
     $locationProvider.hashPrefix('');

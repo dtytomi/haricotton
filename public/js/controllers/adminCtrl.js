@@ -212,7 +212,7 @@ harricottonApp
     InvestmentManagement.get()
       .then(function(response) {
         // body...
-        $scope.users = response.data;
+        $scope.investors = response.data;
       }, 
       function  (error) {
         // body...
@@ -226,8 +226,7 @@ harricottonApp
       InvestmentManagement.show(id)
         .then(function(response) {
           // body...
-          $scope.user = response.data;
-          console.log($scope.user);
+          $scope.investment = response.data;
         }, 
         function  (error) {
           // body...
@@ -239,13 +238,19 @@ harricottonApp
       
       id = $stateParams.id;
 
-      InvestmentManagement.update($scope.investmentData, id)
+      var investmentData = {
+        'amountPaid': $scope.investment.amountPaid,
+        'status': $scope.investment.status
+      };
+
+      InvestmentManagement.update(investmentData, id)
         .then(function(response) {
           // body...
           InvestmentManagement.get()
             .then(function (response) {
               // body...
-              $scope.users = response.data;
+              $scope.investors = response.data;
+              $location.path('/superadmin');
             });          
         }, 
         function  (error) {
@@ -262,7 +267,7 @@ harricottonApp
           InvestmentManagement.get()
             .then(function (response) {
               // body...
-              $scope.users = response.data;
+              $scope.investors = response.data;
             });
         }, 
         function  (error) {
@@ -271,4 +276,88 @@ harricottonApp
         });
     }
 
+  })
+  
+  .controller('OrdersCtrl', function ($location, $scope, $stateParams, Order) {
+      
+    Order.get() 
+      .then(function(response) {
+        // body...
+        $scope.orders = response.data;
+      }, 
+      function  (error) {
+        // body...
+        console.log(error);
+      });
+
+    $scope.findOne = function () {
+      
+      var id = $stateParams.id;
+
+      Order.show(id)
+        .then(function(response) {
+          // body...
+          $scope.order = response.data;
+        }, 
+        function  (error) {
+          // body...
+          console.log(error);
+        });
+    } 
+
+    $scope.updateOrder = function () {
+      
+      id = $stateParams.id;
+
+      var investmentData = {
+        'balance': $scope.order.balance,
+        'payout': $scope.order.payout,
+        'status': $scope.order.status
+      };
+
+      Order.update(investmentData, id)
+        .then(function(response) {
+          // body...
+          Order.get()
+            .then(function (response) {
+              // body...
+              $scope.orders = response.data;
+              $location.path('/superadmin/orders');
+            });          
+        }, 
+        function  (error) {
+          // body...
+          console.log(error);
+        });
+    } 
+
+    $scope.deleteOrder = function (id) {
+
+      Order.delete(id)
+        .then(function(response) {
+          // body...
+          Order.get()
+            .then(function (response) {
+              // body...
+              $scope.orders = response.data;
+            });
+        }, 
+        function  (error) {
+          // body...
+          console.log(error);
+        });
+    }
+
+  })
+
+  .controller('PayoutCtrl', function ($location, $scope, $stateParams, Payout) {
+    Payout.get() 
+      .then(function(response) {
+        // body...
+        $scope.payouts = response.data;
+      }, 
+      function  (error) {
+        // body...
+        console.log(error);
+      });
   });

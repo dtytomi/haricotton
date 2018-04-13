@@ -13,26 +13,22 @@
                   <th scope="col">#</th>
                   <th scope="col">Name</th>
                   <th scope="col">AmountPaid</th>
-                  <th scope="col">Investment</th>
-                  <th scope="col">Mode Of Payment</th>
                   <th scope="col">Status</th>
                   <th scope="col">Action</th>
                 </tr>
               </thead>
               <tbody>
-                <tr ng-repeat="user in users">
+                <tr ng-repeat="investor in investors">
                   <th scope="row"><%$index + 1%></th>
-                  <td><%user.name%></td>
-                  <td><%user.investment.amountPaid%></td>
-                  <td><%user.investment.investmentPaid%></td>
-                  <td><%user.investment.modeOfPayment%></td>
-                  <td><%user.investment.status%></td>
+                  <td><%investor.user.name%></td>
+                  <td><%investor.amountPaid%></td>
+                  <td><%investor.status%></td>
                   <td>
-                    <a ui-sref="editUserInvestment({id: user.id})" class="btn btn-primary btn-sm">
+                    <a ui-sref="editUserInvestment({id: investor.id})" class="btn btn-primary btn-sm">
                       <i class="far fa-edit"></i>
                     </a>
                 
-                    <a href="" ng-click="deleteUser(user.id)" class="btn btn-danger btn-sm">
+                    <a href="" ng-click="deleteInvestment(investor.id)" class="btn btn-danger btn-sm">
                       <i class="far fa-trash-alt"></i>
                     </a>
                   </td>

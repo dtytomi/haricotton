@@ -13,11 +13,13 @@ class CreateBalanceTable extends Migration
      */
     public function up()
     {
-        Schema::create('balance', function (Blueprint $table) {
+        Schema::create('balances', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('balance')->nullable();
             $table->integer('payout')->nullable();
             $table->string('status')->default('Pending');
+            $table->integer('user_id')->unsigned()->index();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -29,6 +31,6 @@ class CreateBalanceTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('balance');
+        Schema::dropIfExists('balances');
     }
 }

@@ -1,48 +1,85 @@
+<!-- Angular Material style sheet -->
+<link rel="stylesheet" type="text/css" href="vendor/material/angular-material.min.css">
+
 <section  class="container" ng-controller="investCtrl">
+  <div class="row">
+    <div class="col-7">
+      <div class="card">
+        <div class="card-header">
+         <i class="far fa-file-alt"></i> Investment Form
+        </div>
+        <div class="card-body">
+          <form role="form" name="invest" class="px-5" ng-submit="makePayment()" novalidate> 
+            <div class="form-row">
+              <div class="form-group col">
+                <md-input-container flex="100">
+                  <label>Package Name</label>
+                  <md-select name="packageName" ng-model="data.singleSelect" required>
+                    <md-option ng-repeat="subscription in subscriptions" value="<%subscription.membershipFee%>">
+                      <%subscription.name%>
+                    </md-option>
+                  </md-select>
+                  <div class="errors" ng-messages="invest.packageName.$error">
+                    <div ng-message="required">Required</div>
+                  </div>
+                </md-input-container>
 
-  <div class="card w-75">
-    <div class="card-header">
-     <i class="far fa-file-alt"></i> Investment Form
+              </div>
+
+              <div class="form-group col">
+                <md-input-container>
+                  <label>Amount ₦:</label>
+                  <input ng-value="data.singleSelect" readonly>
+                </md-input-container>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group col">
+                <md-input-container>
+                  <label>Earning Period</label>
+                  <md-select name="earning" ng-model="data.model" required>
+                    <md-option ng-repeat="option in data.availableOptions" value="<%option.value%>">
+                      <%option.name%>
+                    </md-option>
+                  </md-select>
+                  <div class="errors" ng-messages="invest.earning.$error">
+                    <div ng-message="required">Required</div>
+                  </div>
+                </md-input-container>
+              </div>
+
+              <div class="form-group col">
+                <div class="form-group col">
+                  <md-input-container>
+                    <label>Earning Rate:</label>
+                    <input ng-model="data.rate" ng-value="data.model | earningRate:subscriptions:data.singleSelect" readonly>
+                  </md-input-container>
+                </div>
+              </div>
+            </div>   
+
+            <input type="submit" value="Send" ng-disabled="invest.$invalid" class="btn btn-success text-center">
+          </form>
+        </div>
+      </div>
     </div>
-    <div class="card-body">
-      <form role="form" ng-submit="createInvestment()" novalidate> 
-
-        <div class="form-group row">
-          <label for="packageName" class="col-sm-3 col-form-label">Package Name:</label>
-          <div class="col-xs-6 col-sm-6 col-md-7">
-            <select name="packageName" id="packageName" class="form-control" ng-model="data.singleSelect">
-              <option value="">---Please select---</option>
-              <option ng-repeat="subscription in subscriptions" value="<%subscription.membershipFee%>"><%subscription.name%></option>
-            </select>
-          </div>
+    <div class="col-5">
+      <div class="card">
+        <div class="card-header">
+          Bank Details
         </div>
+        <dl class="row p-2" >
+          <dt class="col-sm-5">Bank:</dt>
+          <dd class="col-sm-7">Stanbic IBTC Bank .</dd>
 
-        <div class="form-group row">
-          <label for="message" class="col-sm-3 col-form-label">Amount ₦:</label>
-          <div class="col-xs-6 col-sm-6 col-md-7">
-            <input class="form-control" type="text" ng-value="data.singleSelect" placeholder="Readonly input here…" readonly>
-          </div>
-        </div>
+          <dt class="col-sm-5">Acct No:</dt>
+          <dd class="col-sm-7">0024759981</dd>
 
-        <div class="form-group row">
-          <label for="message" class="col-sm-3 col-form-label">Earning Period:</label>
-          <div class="col-xs-6 col-sm-6 col-md-7">
-            <select name="packageName" id="packageName" class="form-control" ng-model="data.model">
-              <option value="">---Please select---</option>
-              <option ng-repeat="option in data.availableOptions" value="<%option.value%>"><%option.name%></option>
-            </select>
-          </div>
-        </div>
-
-       <!--  <div class="form-group row">
-          <label for="message" class="col-sm-3 col-form-label">Earning Rate:</label>
-          <div class="col-xs-6 col-sm-6 col-md-7">
-            <input class="form-control" type="text" ng-value="subscription.data.model" placeholder="Readonly input here…" readonly>
-          </div>
-        </div> -->
-            
-        <input type="submit" value="Send" class="btn btn-success text-center">
-      </form>
+          <dt class="col-sm-5">Acct Name:</dt>
+          <dd class="col-sm-7">HARICOTTON NIGERIA LIMITED</dd>  
+        </dl>
+      </div>
     </div>
   </div>
 

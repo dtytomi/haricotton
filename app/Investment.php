@@ -10,7 +10,7 @@ class Investment extends Model
     protected $fillable = [
         'amountPaid', 'subscription_id',
         'user_id', 'earningMethod',
-        'investmentPaid', 'modeOfPayment'
+        'status',
     ];
 
     public function user()
@@ -18,8 +18,9 @@ class Investment extends Model
         return $this->belongsTo('Haricotton\User');
     }
 
-     public function subscription()
+    public function subscription()
     {
         return $this->belongsTo('Haricotton\Subscription');
     }
+
 }

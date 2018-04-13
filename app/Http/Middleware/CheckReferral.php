@@ -3,7 +3,6 @@
 namespace Haricotton\Http\Middleware;
 
 use Closure;
-use Log;
 
 class CheckReferral
 {
@@ -21,8 +20,8 @@ class CheckReferral
         // Check that there is not already a cookie set and that we have 'ref' in the url
         if (! $request->hasCookie('referral') && $request->query('ref') ) {
           // Add a cookie to the response that lasts 5 years (in minutes)
-            Log::info('This is some useful information.' .$request->query('ref'));
-          $response->cookie( 'referral', encrypt( $request->query('ref') ), 525600, '/register', false );
+          // $domain = ($_SERVER['HTTP_HOST'] != 'localhost') ? $_SERVER['HTTP_HOST'] : false;
+          $response->cookie( 'referral', encrypt( $request->query('ref') ), 525600, '/register', 'localhost', false);
         }
 
         return $response;

@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 
 class InvestmentController extends Controller
-{
+{   
     //
     public function index()
     {
@@ -47,7 +47,7 @@ class InvestmentController extends Controller
 
       $investment->subscription_id =  $subscription->id;
       
-      $user->investment()->save($investment);
+      $user->investments()->save($investment);
 
       $investment->save();
 

@@ -46,12 +46,17 @@ class User extends Authenticatable
      */
     public function helps()
     {
-        return $this->hasMany('Haricotton\Profile');
+        return $this->hasMany('Haricotton\Help');
     }
 
-    public function investment()
+    public function investments()
     {
-        return $this->hasOne('Haricotton\Investment');
+        return $this->hasMany('Haricotton\Investment');
+    }
+
+    public function balance()
+    {
+        return $this->hasOne('Haricotton\Balance');
     }
 
 }

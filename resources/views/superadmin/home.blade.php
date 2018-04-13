@@ -74,10 +74,10 @@
           </a>
           <ul class="sidenav-second-level collapse" id="collapseExamplePages">
             <li>
-              <a href="login.html">View Payout Order</a>
+              <a ui-sref="orders" >View Payout Order</a>
             </li>
             <li>
-              <a href="register.html">Approved Payout Order</a>
+              <a ui-sref="payout" >Approved Payout Order</a>
             </li>
           </ul>
         </li>

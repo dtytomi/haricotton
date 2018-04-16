@@ -1,0 +1,47 @@
+<section ng-controller="OrdersCtrl">
+  <div class="container">
+    <div class="row">
+      <div class="col ">
+        <div class="card">
+          <div class="card-header">
+            Featured
+          </div>
+          <div class="card-body">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Balance</th>
+                  <th scope="col">Payout</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">Date to be Paid</th>
+                  <th scope="col">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="order in orders">
+                  <th scope="row"><%$index + 1%></th>
+                  <td><%order.user.name%></td>
+                  <td><%order.balance%></td>
+                  <td><%order.payout%></td>
+                  <td><%order.status%></td>
+                  <td><%order.created_at%></td>
+                  <td>
+                    <a ui-sref="editOrder({id: order.id})" class="btn btn-primary btn-sm">
+                      <i class="far fa-edit"></i>
+                    </a>
+                
+                    <a href="" ng-click="deleteOrder(order.id)" class="btn btn-danger btn-sm">
+                      <i class="far fa-trash-alt"></i>
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

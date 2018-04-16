@@ -1,0 +1,45 @@
+<section ng-controller="OrdersCtrl" data-ng-init="findOne()">
+  <!-- Breadcrumbs-->
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a ui-sref="dashboard">Investment</a>
+    </li>
+    <li class="breadcrumb-item active">Edit Investment</li>
+  </ol>
+
+  <div class="card w-75">
+    <div class="card-body">
+      <form role="form" ng-submit="updateOrder()" novalidate> 
+
+        <div class="form-group row">
+          <label for="balance" class="col-sm-3 col-form-label">Balance</label>
+          <div class="col-xs-6 col-sm-6 col-md-7">
+            <input type="text" name="balance" id="balance" class="form-control input-sm" placeholder="Balance" ng-model="order.balance" readonly>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="payout" class="col-sm-3 col-form-label">Payout</label>
+          <div class="col-xs-6 col-sm-6 col-md-7">
+            <input type="text" name="payout" id="payout" class="form-control input-sm" placeholder="Payout" ng-model="order.payout" readonly>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="status" class="col-sm-3 col-form-label">Status</label>
+          <div class="col-xs-6 col-sm-6 col-md-7">
+            <select name="status" class="form-control" id="status" ng-model="order.status">
+              <!-- not selected / blank option -->
+              <option value="Pending">Pending</option> <!-- interpolation -->
+              <option value="Paid">Paid</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="col-md-3 offset-md-8">
+          <input type="submit" value="Submit" class="btn btn-info">
+        </div>
+      </form>
+    </div>
+  </div>
+</section>

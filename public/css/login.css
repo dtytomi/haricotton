@@ -2,7 +2,7 @@
 
 .component1 {
   color:#fff;
-  height: auto;
+  height: 60%;
   position: relative;
   display: table;
   width: 100%;
@@ -16,7 +16,7 @@
 
 .component2 {
   padding: 100px 0;
-  height: 100%;
+  height: auto;
 }
 
 @media (min-width: 768px) {

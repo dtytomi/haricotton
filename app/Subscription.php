@@ -18,4 +18,9 @@ class Subscription extends Model
         return $this->hasOne('Haricotton\Investment');
     }
 
+    public function getTableColumns() {
+      return $this->getConnection()->getSchemaBuilder()->getColumnListing($this->getTable());
+    }
+
+
 }

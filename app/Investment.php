@@ -23,4 +23,9 @@ class Investment extends Model
         return $this->belongsTo('Haricotton\Subscription');
     }
 
+    public function balance()
+    {
+        return $this->belongsTo('Haricotton\Balance');
+    }
+
 }

@@ -16,4 +16,9 @@ class Balance extends Model
     {
         return $this->belongsTo('Haricotton\User');
     }
+
+    public function investment()
+    {
+        return $this->hasOne('App\Investment');
+    }
 }

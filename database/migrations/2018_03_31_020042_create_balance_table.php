@@ -18,8 +18,11 @@ class CreateBalanceTable extends Migration
             $table->integer('balance')->nullable();
             $table->integer('payout')->nullable();
             $table->string('status')->default('Pending');
+            $table->date('due_date');
             $table->integer('user_id')->unsigned()->index();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->integer('investment_id')->unsigned()->index();
+            $table->foreign('investment_id')->references('id')->on('investments')->onDelete('cascade');
             $table->timestamps();
         });
     }

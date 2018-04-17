@@ -3,6 +3,7 @@
 namespace Haricotton\Http\Controllers\Admin;
 
 use Haricotton\Balance;
+use Haricotton\Subscription;
 use Illuminate\Http\Request;
 use Haricotton\Http\Controllers\Controller;
 
@@ -62,7 +63,37 @@ class AdminOrder extends Controller
 
       $input = $request->all();
 
+      $subscription = new Subscription;
+
+      $earningMethod = $subscription->getTableColumns()
+                          ->where('weeklyEarnings', 'weeklyEarnings',)
+                          ->orWhere('monthlyEarnings', 'monthlyEarnings')
+                          ->get();
+
+      $date = date("Y-m-d");
+
+      switch ($earningMethod) {
+        case 'weeklyEarnings':
+          $date = strtotime(date("Y-m-d", strtotime($date)) . " +1 week");
+          break;
+        
+        case 'monthlyEarnings':
+          $date = strtotime(date("Y-m-d", strtotime($date)) . " +1 month");
+          break;
+
+        default:
+          break;
+      }
+
       $balance = Balance::findOrFail($id);
+
+      $newBalance = new Balance();
+      $newBalance->status = 'Pending';
+      $newBalance->balance = $balance->balance;        
+      $newBalance->payout = $balance->payout;
+      $newBalance->user_id = $balance->user_id;
+      $newBalance->due_date = $date;
+      $newBalance->save();
 
       $balance->update($input);
 

@@ -75,19 +75,16 @@ class AdminInvestmentController extends Controller
       $interest = Subscription::select($earningMethod)
                         ->where('id', $subscriptionId)->first()->$earningMethod;
 
-      $date = date("Y-m-d");
-
       switch ($earningMethod) {
         case 'weeklyEarnings':
-          $date = strtotime(date("Y-m-d", strtotime($date)) . " +1 week");
+          $date = date("Y-m-d h:i:s", strtotime("+1 week"));
           break;
         
         case 'monthlyEarnings':
-          $date = strtotime(date("Y-m-d", strtotime($date)) . " +1 month");
+          $date = date("Y-m-d h:i:s", strtotime("+1 Month"));
           break;
-
+          
         default:
-          $date = strtotime(date("Y-m-d", strtotime($date)) . " +1 day");
           break;
       }
 
@@ -99,6 +96,7 @@ class AdminInvestmentController extends Controller
         $balance->balance = $request->input('amountPaid');        
         $balance->payout = $interest;
         $balance->user_id = $userId;
+        $balance->investment_id = $id;
         $balance->due_date = $date;
         $balance->save();
       }

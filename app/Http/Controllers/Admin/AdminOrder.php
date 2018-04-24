@@ -3,7 +3,7 @@
 namespace Haricotton\Http\Controllers\Admin;
 
 use Haricotton\Balance;
-use Haricotton\Subscription;
+use Haricotton\Investment;
 use Illuminate\Http\Request;
 use Haricotton\Http\Controllers\Controller;
 
@@ -63,22 +63,17 @@ class AdminOrder extends Controller
 
       $input = $request->all();
 
-      $subscription = new Subscription;
+      $investmentId = Balance::findOrFail($id)->investment_id;
 
-      $earningMethod = $subscription->getTableColumns()
-                          ->where('weeklyEarnings', 'weeklyEarnings',)
-                          ->orWhere('monthlyEarnings', 'monthlyEarnings')
-                          ->get();
-
-      $date = date("Y-m-d");
+      $earningMethod = Investment::findOrFail($investmentId)->earningMethod;
 
       switch ($earningMethod) {
         case 'weeklyEarnings':
-          $date = strtotime(date("Y-m-d", strtotime($date)) . " +1 week");
+          $date = date("Y-m-d h:i:s", strtotime("+1 week"));
           break;
         
         case 'monthlyEarnings':
-          $date = strtotime(date("Y-m-d", strtotime($date)) . " +1 month");
+          $date = date("Y-m-d h:i:s", strtotime("+1 Month"));
           break;
 
         default:
@@ -92,6 +87,7 @@ class AdminOrder extends Controller
       $newBalance->balance = $balance->balance;        
       $newBalance->payout = $balance->payout;
       $newBalance->user_id = $balance->user_id;
+      $newBalance->investment_id = $investmentId;
       $newBalance->due_date = $date;
       $newBalance->save();
 

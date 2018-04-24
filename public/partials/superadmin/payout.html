@@ -2,39 +2,41 @@
   <div class="container">
     <div class="row">
       <div class="col ">
-        <div class="card">
+        <div class="card mb-3">
           <div class="card-header">
             Featured
           </div>
           <div class="card-body">
-            <table class="table table-bordered">
-              <thead>
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Name</th>
-                   <th scope="col">Balance</th>
-                  <th scope="col">Payout</th>
-                  <th scope="col">Status</th>
-                  <th scope="col">Paid on</th>
-                  <th scope="col">Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr ng-repeat="pay in payouts">
-                  <th scope="row"><%$index + 1%></th>
-                  <td><%pay.user.name%></td>
-                  <td><%pay.balance%></td>
-                  <td><%pay.payout%></td>
-                  <td><%pay.status%></td>
-                  <td><%pay.created_at%></td>
-                  <td>              
-                    <a href="" ng-click="deleteInvestment(pay.id)" class="btn btn-danger btn-sm">
-                      <i class="far fa-trash-alt"></i>
-                    </a>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+            <div class="table-responsive">  
+              <table class="table table-bordered table-sm">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                     <th scope="col">Balance</th>
+                    <th scope="col">Payout</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Paid on</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr ng-repeat="pay in payouts">
+                    <th scope="row"><%$index + 1%></th>
+                    <td><%pay.user.name%></td>
+                    <td><%pay.balance%></td>
+                    <td><%pay.payout%></td>
+                    <td><%pay.status%></td>
+                    <td><%pay.created_at%></td>
+                    <td>              
+                      <a href="" ng-click="deleteInvestment(pay.id)" class="btn btn-danger btn-sm">
+                        <i class="far fa-trash-alt"></i>
+                      </a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>

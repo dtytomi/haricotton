@@ -154,7 +154,7 @@
     </div>
     <!-- /.container-fluid-->
     <!-- /.content-wrapper-->
-    <footer class="sticky-footer">
+    <footer class="fixed-bottom">
       <div class="container">
         <div class="text-center">
           <small>Copyright © Your Website 2018</small>

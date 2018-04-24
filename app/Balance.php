@@ -8,8 +8,8 @@ class Balance extends Model
 {
     //
     protected $fillable = [
-      'balance', 'payout',
-      'status',
+      'balance', 'payout', 'user_id',
+      'status', 'investment_id'
     ];
 
     public function user()
